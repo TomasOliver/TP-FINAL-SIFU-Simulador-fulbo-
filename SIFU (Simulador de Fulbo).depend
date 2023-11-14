@@ -1,0 +1,132 @@
+# depslib dependency file v1.0
+1699458279 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\equipo.c
+	"equipo.h"
+
+1699457282 c:\users\usuario\desktop\sifu (simulador de fulbo)\equipo.h
+	"jugador.h"
+
+1699457282 c:\users\usuario\desktop\sifu (simulador de fulbo)\jugador.h
+
+1699458892 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1699027194 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\listas.c
+	<stdio.h>
+	<stdlib.h>
+	"listas.h"
+	"string.h"
+
+1699455048 c:\users\usuario\desktop\sifu (simulador de fulbo)\listas.h
+	"jugador.h"
+	"equipo.h"
+
+1699458936 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+
+1699458364 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1699458354 c:\users\usuario\desktop\sifu (simulador de fulbo)\sublista.h
+	"jugador.h"
+
+1699458646 source:c:\users\usuario\desktop\sifu (simulador de fulbo)\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+	"subLista.h"
+
+1699458573 c:\users\usuario\desktop\sifu (simulador de fulbo)\listappl.h
+	"equipo.h"
+
+1699909516 source:c:\users\mauro\desktop\sifu (simulador de fulbo)\equipo.c
+	"equipo.h"
+
+1699910832 c:\users\mauro\desktop\sifu (simulador de fulbo)\equipo.h
+
+1699928581 source:c:\users\mauro\desktop\sifu (simulador de fulbo)\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1699913604 c:\users\mauro\desktop\sifu (simulador de fulbo)\jugador.h
+
+1699458366 source:c:\users\mauro\desktop\sifu (simulador de fulbo)\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1699458356 c:\users\mauro\desktop\sifu (simulador de fulbo)\sublista.h
+	"jugador.h"
+
+1699908555 source:c:\users\mauro\desktop\sifu (simulador de fulbo)\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1699909894 c:\users\mauro\desktop\sifu (simulador de fulbo)\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1699929968 source:c:\users\mauro\desktop\sifu (simulador de fulbo)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+
+1699909516 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\equipo.c
+	"equipo.h"
+
+1699910832 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\equipo.h
+
+1699928581 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1699913604 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\jugador.h
+
+1699908555 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1699909894 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1699458356 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\sublista.h
+	"jugador.h"
+
+1699935426 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+
+1699458366 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\sifu (simulador de fulbo)\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
