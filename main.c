@@ -5,6 +5,8 @@
 #include "jugador.h"
 #include "listaPPL.h"
 
+puts("pull");
+
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
 const char contraAdmin[20] = "total";
