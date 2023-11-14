@@ -4,7 +4,6 @@
 #include "equipo.h"
 #include "jugador.h"
 #include "listaPPL.h"
-printf("xd");
 
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
