@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <windows.h>
 #include "string.h"
 #include "equipo.h"
 #include "jugador.h"
@@ -10,6 +12,7 @@ const char usuAdmin[20] = "admin";
 const char contraAdmin[20] = "total";
 
 ///Estructuras
+
 typedef struct
 {
     char nombreEquipo[50];
@@ -26,6 +29,8 @@ typedef struct
 } registroArchivo;
 
 ///Prototipado
+
+void menuInicial();
 void cargarArchivo();
 registroArchivo cargarRegistro();
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl);
@@ -34,6 +39,9 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
+
+///FUNCIONES AUXILIARES
+void gotoxy(int x, int y);
 
 int main()
 {
@@ -64,8 +72,10 @@ int main()
     int credenciales=0;
 
 
+
     do
     {
+        //menuInicial();
         printf("MENU\n\n");
         printf("1- Jugar\n");
         printf("2- Ver equipos\n"); //Dentro ver jugadores
@@ -131,6 +141,26 @@ int main()
 
 
     return 0;
+}
+
+///FUNCIONES
+
+void menuInicial()
+{
+    gotoxy(55,4);
+    printf("\n  #####      ###     #######     #     #");
+    gotoxy(35,5);
+    printf("\n #     #      #      #           #     #");
+    gotoxy(35,6);
+    printf("\n #            #      #           #     #");
+    gotoxy(35,7);
+    printf("\n  #####       #      #####       #     #");
+    gotoxy(35,8);
+    printf("\n       #      #      #           #     #");
+    gotoxy(35,9);
+    printf("\n #     # ###  #  ### #       ### #     #");
+    gotoxy(35,10);
+    printf("\n  #####  ### ### ### #       ###  ##### ");
 }
 
 void cargarArchivo()
@@ -317,4 +347,12 @@ int sistemaLogin(char usu[],char contra[])
 }
 
 
+///FUNCIONES AUXILIARES
 
+void gotoxy(int x, int y)
+{
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}

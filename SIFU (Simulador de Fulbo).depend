@@ -130,3 +130,44 @@
 	"string.h"
 	"subLista.h"
 
+1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.c
+	"equipo.h"
+
+1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
+
+1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
+
+1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.h
+	"jugador.h"
+
+1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1699982432 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	<windows.h>
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+
