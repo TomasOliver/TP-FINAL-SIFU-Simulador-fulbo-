@@ -9,7 +9,7 @@
 
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
-const char contraAdmin[20] = "admin";
+const char contraAdmin[20] = "total";
 
 ///Estructuras
 
@@ -60,8 +60,7 @@ int main()
     // inorder(arbolJugadores);
 
 
-    int opcion,opcionAdmin,guardado;
-
+    int opcion;
     char nombreBuscado[35];
     nodoarbol* nodoBuscado;
     char continuar='s';
@@ -77,11 +76,10 @@ int main()
 
     menuInicial();
 
-
+    system("cls");
 
     do
     {
-        system("cls");
         printf("MENU\n\n");
         printf("1- Jugar\n");
         printf("2- Ver equipos\n");//Dentro ver jugadores
@@ -129,73 +127,14 @@ int main()
             break;
 
         case 4:
-            system("cls");
-            printf("\n\nIngresaste al menu secreto: \n");
+
+            printf("Ingresaste al menu secreto: \n");
             credenciales = sistemaLogin(usurio,contrasenia);
-
-            if(credenciales == 1)
-            {
-                do
-                {
-
-                    printf("\n\nMENU ADMIN\n");
-                    printf("\n1- Listados");
-                    printf("\n2- Alta");
-                    printf("\n3- Baja");
-                    printf("\n4- Modificacion");
-                    printf("\n0- Volver al menu anterior\n");
-
-                    scanf("%i",&opcionAdmin);
-
-                    switch(opcionAdmin)
-                    {
-                    case 1:
-                        system("cls");
-                        printf("Ingresaste a la opcion 1\n");
-                        system("pause");
-                        break;
-
-                    case 2:
-                        system("cls");
-                        printf("Ingresaste a la opcion 2\n");
-                        system("pause");
-                        break;
-
-                    case 3:
-                        system("cls");
-                        printf("Ingresaste a la opcion 3\n");
-                        system("pause");
-                        break;
-
-                    case 4:
-                        system("cls");
-                        printf("Ingresaste a la opcion 4\n");
-                        system("pause");
-                        break;
-
-                    case 0:
-                        system("cls");
-                        break;
-
-                    default:
-                        system("cls");
-                        printf("Error, opcion invalida. Intente nuevamente...");
-                        opcionAdmin=-1;
-                        break;
-
-
-                    }
-                }
-                while(opcionAdmin!=0);
-            }
 
             break;
 
         case 0:
-            printf("Desea guardar los datos modificados en partida? \n1- si / 2- no \n");
-            scanf("%i",&guardado);
-
-            printf("\nSaliendo del programa...\n");
+            printf("Saliendo del programa...\n");
             break;
         default:
             printf("Error, opcion invalida. Intente nuevamente...\n");
@@ -397,7 +336,7 @@ int sistemaLogin(char usu[],char contra[])
 
     if( (strcmp(usu,usuAdmin)== 0) && (strcmp(contra,contraAdmin) == 0) )
     {
-        printf("\nIngresaste al modo admin, bienvenido: \n");
+        printf("Ingresaste al modo admin, bienvenido: \n");
         credenciales = 1;
     }
     else
