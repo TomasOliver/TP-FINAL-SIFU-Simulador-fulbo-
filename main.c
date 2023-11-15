@@ -39,10 +39,9 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
+void gotoxy(int x,int y);
 
-///FUNCIONES AUXILIARES
-void gotoxy(int x, int y);
-
+///MAIN
 int main()
 {
 
@@ -71,73 +70,92 @@ int main()
     char contrasenia[20];
     int credenciales=0;
 
+    int menus = 0;
 
+    system("title=S.I.F.U (Simulador de Fulbo)");
 
-    do
+///MENU
+
+    while(menus == 0)
     {
-        //menuInicial();
-        printf("MENU\n\n");
-        printf("1- Jugar\n");
-        printf("2- Ver equipos\n"); //Dentro ver jugadores
-        printf("3- Buscar jugador\n");
-        printf("0- Salir del programa\n");
-        scanf("%i", &opcion);
+        menuInicial();
+        printf("\n\nPresione 1 para continuar.....");
+        scanf("%i",&menus);
 
-        switch (opcion)
+        system("cls");
+
+        if(menus == 1)
         {
-        case 1:
-            printf("Ha elegido la opcion 1\n");
-            break;
-        case 2:
-            while(flag==0)
+            do
             {
-                mostrarNombresEquipos(listaEquipos);
-                printf("\nIngrese nombre del equipo cuyo plantel desee ver: \n");
-                fflush(stdin);
-                gets(nombreBuscado);
-                flag=mostrarJugadoresPorNombreEquipo(listaEquipos,nombreBuscado);
-            }
-            break;
-        case 3:
-            while(continuar=='s')
-            {
-                printf("\nIngrese el nombre del jugador buscado: \n");
-                fflush(stdin);
-                gets(nombreBuscado);
+                printf("MENU\n\n");
+                printf("1- Jugar\n");
+                printf("2- Ver equipos\n"); //Dentro ver jugadores
+                printf("3- Buscar jugador\n");
+                printf("0- Salir del programa\n");
 
-                nodoBuscado=buscar(arbolJugadores,nombreBuscado);
+                scanf("%i", &opcion);
 
-                if(nodoBuscado==NULL)
+                switch (opcion)
                 {
-                    printf("\nError.El jugador no esta registrado.\n");
+                case 1:
+                    printf("Ha elegido la opcion 1\n");
+                    break;
+                case 2:
+                    while(flag==0)
+                    {
+                        mostrarNombresEquipos(listaEquipos);
+                        printf("\nIngrese nombre del equipo cuyo plantel desee ver: \n");
+                        fflush(stdin);
+                        gets(nombreBuscado);
+                        flag=mostrarJugadoresPorNombreEquipo(listaEquipos,nombreBuscado);
+                    }
+                    break;
+                case 3:
+                    while(continuar=='s')
+                    {
+                        printf("\nIngrese el nombre del jugador buscado: \n");
+                        fflush(stdin);
+                        gets(nombreBuscado);
+
+                        nodoBuscado=buscar(arbolJugadores,nombreBuscado);
+
+                        if(nodoBuscado==NULL)
+                        {
+                            printf("\nError.El jugador no esta registrado.\n");
+                        }
+                        else
+                        {
+                            mostrar_jugador(nodoBuscado->dato);
+                        }
+                        printf("Desea buscar otro jugador? (s/n)\n");
+                        fflush(stdin);
+                        scanf("%c",&continuar);
+                    }
+                    break;
+
+                case 4:
+
+                    printf("Ingresaste al menu secreto: \n");
+                    credenciales = sistemaLogin(usurio,contrasenia);
+
+                    break;
+
+                case 0:
+                    printf("Saliendo del programa...\n");
+                    break;
+                default:
+                    printf("Error, opcion invalida. Intente nuevamente...\n");
+                    opcion=-1;
+                    break;
                 }
-                else
-                {
-                    mostrar_jugador(nodoBuscado->dato);
-                }
-                printf("Desea buscar otro jugador? (s/n)\n");
-                fflush(stdin);
-                scanf("%c",&continuar);
             }
-            break;
-
-        case 4:
-
-            printf("Ingresaste al menu secreto: \n");
-            credenciales = sistemaLogin(usurio,contrasenia);
-
-            break;
-
-        case 0:
-            printf("Saliendo del programa...\n");
-            break;
-        default:
-            printf("Error, opcion invalida. Intente nuevamente...\n");
-            opcion=-1;
-            break;
+            while(opcion!=0);
         }
     }
-    while(opcion!=0);
+
+
+
 
 
     return 0;
@@ -147,19 +165,13 @@ int main()
 
 void menuInicial()
 {
-    gotoxy(55,4);
+    system("cls");
     printf("\n  #####      ###     #######     #     #");
-    gotoxy(35,5);
     printf("\n #     #      #      #           #     #");
-    gotoxy(35,6);
     printf("\n #            #      #           #     #");
-    gotoxy(35,7);
     printf("\n  #####       #      #####       #     #");
-    gotoxy(35,8);
     printf("\n       #      #      #           #     #");
-    gotoxy(35,9);
     printf("\n #     # ###  #  ### #       ### #     #");
-    gotoxy(35,10);
     printf("\n  #####  ### ### ### #       ###  ##### ");
 }
 
@@ -349,10 +361,12 @@ int sistemaLogin(char usu[],char contra[])
 
 ///FUNCIONES AUXILIARES
 
-void gotoxy(int x, int y)
+void gotoxy(int x,int y)
 {
-    COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+    HANDLE hcon;
+    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD dwPos;
+    dwPos.X = x;
+    dwPos.Y= y;
+    SetConsoleCursorPosition(hcon,dwPos);
 }
