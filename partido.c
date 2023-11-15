@@ -5,10 +5,13 @@
 #include "partido.h"
 #include "equipo.h"
 
-/// PONER EN EL MAIN:  srand(time(NULL)); (ES PARA EL MARCADOR DEL PARTIDO
-
-void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b, int opcion)
+void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int opcion)
 {
+
+    a->golesPartido = 0;
+    b->golesPartido = 0;
+    a->tarjetasPartido = 0;
+    b->tarjetasPartido = 0;
 
     srand(time(NULL));
 
@@ -23,14 +26,14 @@ void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b, int op
         {
             if (rand() % 2 == 0)
             {
-                a.golesPartido++;
-                a.golesXMinuto[ga] = minuto;
+                a->golesPartido++;
+                a->golesXMinuto[ga] = minuto;
                 ga++;
             }
             else
             {
-                b.golesPartido++;
-                b.golesXMinuto[gb] = minuto;
+                b->golesPartido++;
+                b->golesXMinuto[gb] = minuto;
                 gb++;
             }
         }
@@ -39,19 +42,19 @@ void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b, int op
         {
             if (rand() % 2 == 0)
             {
-                a.tarjetasPartido++;
-                a.tarjetasXMinuto[ta] = minuto;
+                a->tarjetasPartido++;
+                a->tarjetasXMinuto[ta] = minuto;
                 ta++;
             }
             else
             {
-                b.tarjetasPartido++;
-                b.tarjetasXMinuto[tb] = minuto;
+                b->tarjetasPartido++;
+                b->tarjetasXMinuto[tb] = minuto;
                 tb++;
             }
         }
 
-        printf("\r%s %i - %2d' - %i %s",equipoA.nombreEquipo,a.golesPartido,minuto,b.golesPartido,equipoB.nombreEquipo);
+        printf("\r%s %i - %2d' - %i %s",equipoA.nombreEquipo,a->golesPartido,minuto,b->golesPartido,equipoB.nombreEquipo);
 
         fflush(stdout);
 
@@ -61,8 +64,8 @@ void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b, int op
         }
     }
 
-    printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, a.golesPartido, b.golesPartido, equipoB.nombreEquipo);
-    printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, a.tarjetasPartido, b.tarjetasPartido, equipoB.nombreEquipo);
+    printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, a->golesPartido, b->golesPartido, equipoB.nombreEquipo);
+    printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, a->tarjetasPartido, b->tarjetasPartido, equipoB.nombreEquipo);
 }
 
 void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido a, partido b)
@@ -91,6 +94,7 @@ void resumenPartido(equipo equipoA, equipo equipoB, partido a, partido b)
     int contGB=0;
     int contTA=0;
     int contTB=0;
+
     int i=0;
 
     while(i<=90)

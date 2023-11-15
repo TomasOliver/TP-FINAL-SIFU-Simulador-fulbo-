@@ -134,10 +134,10 @@ int main()
                         nodoEquipo* equipoA = buscar_equipo(listaEquipos,nombreEquipoA);
                         nodoEquipo* equipoB = buscar_equipo(listaEquipos,nombreEquipoB);
 
-                        simularPartido(equipoA->dato, equipoB->dato, partidoA, partidoB, 2);
+                        simularPartido(equipoA->dato, equipoB->dato, &partidoA, &partidoB, 2);
                         resumenPartido(equipoA->dato, equipoB->dato, partidoA, partidoB);
 
-                        printf("\n");
+                        printf("\n\n");
 
                         system("pause");
                     }
