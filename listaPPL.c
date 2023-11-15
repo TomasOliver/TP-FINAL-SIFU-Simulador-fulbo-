@@ -93,4 +93,19 @@ nodoEquipo* buscar_nodo_final_equipo(nodoEquipo* lista)
     return seg;
 }
 
+int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
+{
+    int flag=0;
+    nodoEquipo* seg = listaPpl;
 
+    while(seg !=NULL && flag == 0)
+    {
+        if(strcmp(seg->dato.nombreEquipo, nombreEquipo) == 0)
+        {
+            flag=1;
+        }
+        seg = seg->siguiente;
+    }
+
+    return flag;
+}

@@ -14,7 +14,7 @@ typedef struct
 }partido;
 
 ///Prototipado
-void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b);
+void simularPartido(equipo equipoA, equipo equipoB, partido a, partido b, int opcion);
 void resumenPartido(equipo equipoA, equipo equipoB, partido a, partido b);
 void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido a, partido b);
 int simularGol();

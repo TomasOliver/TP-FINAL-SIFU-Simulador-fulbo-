@@ -18,6 +18,7 @@ nodoEquipo* agregar_equipo(nodoEquipo* listaPpl, equipo e);
 nodoEquipo* crear_nodo_equipo(equipo e);
 nodoEquipo* agregar_final_equipo(nodoEquipo* lista,nodoEquipo* nuevo_nodo);
 nodoEquipo* buscar_nodo_final_equipo(nodoEquipo* lista);
+int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
 
 
 #endif // LISTA_PPL_H_INCLUDED

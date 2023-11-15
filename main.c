@@ -6,6 +6,7 @@
 #include "equipo.h"
 #include "jugador.h"
 #include "listaPPL.h"
+#include "partido.h"
 
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
@@ -60,7 +61,7 @@ int main()
     // inorder(arbolJugadores);
 
 
-    int opcion,opcionAdmin,guardado;
+    int opcion,opcionAdmin,opcionPartido,guardado;
     char nombreBuscado[35];
     nodoarbol* nodoBuscado;
     char continuar='s';
@@ -69,6 +70,7 @@ int main()
     char usurio[20];
     char contrasenia[20];
     int credenciales=0;
+    int seguir = 0;
 
     system("title=S.I.F.U (Simulador de Fulbo)");
 
@@ -91,7 +93,64 @@ int main()
         switch (opcion)
         {
         case 1:
-            printf("Ha elegido la opcion 1\n");
+            system("cls");
+            printf("1- Simular Liga\n");
+            printf("2- Simular Partido\n");
+            scanf("%i", &opcionPartido);
+
+            switch(opcionPartido)
+            {
+            case 1:
+                break;
+            case 2:
+
+                while(seguir == 0)
+                {
+                    system("cls");
+
+                    char nombreEquipoA[20];
+                    char nombreEquipoB[20];
+
+
+                    mostrarNombresEquipos(listaEquipos);
+
+
+                    printf("\nIngrese el nombre del primer equipo\n");
+                    fflush(stdin);
+                    gets(nombreEquipoA);
+
+                    printf("\nIngrese el nombre del segundo equipo\n");
+                    fflush(stdin);
+                    gets(nombreEquipoB);
+
+
+                    if(existeEquipo(listaEquipos,nombreEquipoA) && existeEquipo(listaEquipos,nombreEquipoB))
+                    {
+                        seguir = 1;
+
+                        partido partidoA;
+                        partido partidoB;
+
+                        nodoEquipo* equipoA = buscar_equipo(listaEquipos,nombreEquipoA);
+                        nodoEquipo* equipoB = buscar_equipo(listaEquipos,nombreEquipoB);
+
+                        simularPartido(equipoA->dato, equipoB->dato, partidoA, partidoB, 2);
+                        resumenPartido(equipoA->dato, equipoB->dato, partidoA, partidoB);
+
+                        printf("\n");
+
+                        system("pause");
+                    }
+                    else
+                    {
+                        printf("\nIngrese un nombre de un equipo que exista\n");
+
+                        system("pause");
+                    }
+                }
+
+                break;
+            }
             break;
         case 2:
             while(flag==0)
