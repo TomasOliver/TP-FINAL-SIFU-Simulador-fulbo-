@@ -46,6 +46,10 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="partido.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="partido.h" />
 		<Unit filename="subLista.c">
 			<Option compilerVar="CC" />
 		</Unit>

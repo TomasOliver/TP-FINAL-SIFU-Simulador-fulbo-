@@ -40,7 +40,12 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
-void gotoxy(int x,int y);
+//void gotoxy(int x,int y);
+
+void subMenuJugar(nodoEquipo* listaEquipos);
+void subMenuVerEquipos(nodoEquipo* listaEquipos);
+void subMenuBuscarJugador(nodoarbol* arbolJugadores);
+void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
 
 ///MAIN
 int main()
@@ -61,11 +66,8 @@ int main()
     // inorder(arbolJugadores);
 
 
-    int opcion,opcionAdmin,opcionPartido,guardado;
-    char nombreBuscado[35];
-    nodoarbol* nodoBuscado;
-    char continuar='s';
-    int flag=0;
+    int opcion,opcionAdmin,guardado;
+    char continuarPartido = 's';
 
     char usurio[20];
     char contrasenia[20];
@@ -76,11 +78,11 @@ int main()
 
 ///MENU
 
-    menuInicial();
+    //menuInicial();
 
     do
     {
-        system("cls");
+        //system("cls");
 
         printf("MENU\n\n");
         printf("1- Jugar\n");
@@ -93,96 +95,13 @@ int main()
         switch (opcion)
         {
         case 1:
-            system("cls");
-            printf("1- Simular Liga\n");
-            printf("2- Simular Partido\n");
-            scanf("%i", &opcionPartido);
-
-            switch(opcionPartido)
-            {
-            case 1:
-                break;
-            case 2:
-
-                while(seguir == 0)
-                {
-                    system("cls");
-
-                    char nombreEquipoA[20];
-                    char nombreEquipoB[20];
-
-
-                    mostrarNombresEquipos(listaEquipos);
-
-
-                    printf("\nIngrese el nombre del primer equipo\n");
-                    fflush(stdin);
-                    gets(nombreEquipoA);
-
-                    printf("\nIngrese el nombre del segundo equipo\n");
-                    fflush(stdin);
-                    gets(nombreEquipoB);
-
-
-                    if(existeEquipo(listaEquipos,nombreEquipoA) && existeEquipo(listaEquipos,nombreEquipoB))
-                    {
-                        seguir = 1;
-
-                        partido partidoA;
-                        partido partidoB;
-
-                        nodoEquipo* equipoA = buscar_equipo(listaEquipos,nombreEquipoA);
-                        nodoEquipo* equipoB = buscar_equipo(listaEquipos,nombreEquipoB);
-
-                        simularPartido(equipoA->dato, equipoB->dato, &partidoA, &partidoB, 2);
-                        resumenPartido(equipoA->dato, equipoB->dato, partidoA, partidoB);
-
-                        printf("\n\n");
-
-                        system("pause");
-                    }
-                    else
-                    {
-                        printf("\nIngrese un nombre de un equipo que exista\n");
-
-                        system("pause");
-                    }
-                }
-
-                break;
-            }
+            subMenuJugar(listaEquipos);
             break;
         case 2:
-            while(flag==0)
-            {
-                mostrarNombresEquipos(listaEquipos);
-                printf("\nIngrese nombre del equipo cuyo plantel desee ver: \n");
-                fflush(stdin);
-                gets(nombreBuscado);
-                flag=mostrarJugadoresPorNombreEquipo(listaEquipos,nombreBuscado);
-            }
+            subMenuVerEquipos(listaEquipos);
             break;
         case 3:
-            while(continuar=='s')
-            {
-                printf("\nIngrese el nombre del jugador buscado: \n");
-                fflush(stdin);
-                gets(nombreBuscado);
-
-                nodoBuscado=buscar(arbolJugadores,nombreBuscado);
-
-                if(nodoBuscado==NULL)
-                {
-                    printf("\nError.El jugador no esta registrado.\n");
-                }
-                else
-                {
-                    mostrar_jugador(nodoBuscado->dato);
-                }
-                printf("Desea buscar otro jugador? (s/n)\n");
-                fflush(stdin);
-                scanf("%c",&continuar);
-            }
+            subMenuBuscarJugador(arbolJugadores);
             break;
 
         case 4:
@@ -257,12 +176,14 @@ int main()
 }
 
 ///FUNCIONES
-
+/*
 void menuInicial()
 {
     system("cls");
     system("COLOR 0F");
+    gotoxy(35,5);
     printf("\n  #####      ###     #######     #     #");
+    gotoxy(5000,6);
     printf("\n #     #      #      #           #     #");
     printf("\n #            #      #           #     #");
     printf("\n  #####       #      #####       #     #");
@@ -272,7 +193,7 @@ void menuInicial()
     printf("\n\n");
     system("pause");
 }
-
+*/
 void cargarArchivo()
 {
     FILE* archi = fopen(nombreArchivo,"wb");
@@ -318,8 +239,8 @@ nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl)
             e.calidadEquipo=aux.calidadEquipo;
             strcpy(e.nacionalidadEquipo, aux.nacionalidadEquipo);
             strcpy(e.nombreEquipo,aux.nombreEquipo);
-            e.puntosEquipo=aux.puntosEquipo;
-            e.golesEquipo=aux.golesEquipo;
+            e.puntosEquipo = 0;
+            e.golesEquipo = 0;
 
             listaPpl = alta(listaPpl,e,j);
         }
@@ -401,7 +322,7 @@ void mostrarNombresEquipos(nodoEquipo* LDL) ///Sacar
     int i=1;
     while(LDL!=NULL)
     {
-        printf("%i-%s\n",i,LDL->dato.nombreEquipo);
+        printf("-%s\n",LDL->dato.nombreEquipo);
         i++;
         LDL=LDL->siguiente;
     }
@@ -414,6 +335,7 @@ int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[])
     {
         if(strcmpi(LDL->dato.nombreEquipo,nombreEquipo)==0)
         {
+            system("cls");
             mostrar_lista_jugadores(LDL->listaDeJugadores);
             flag=1;
         }
@@ -422,7 +344,8 @@ int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[])
 
     if(flag==0)
     {
-        printf("\nError, el equipo no existe o no esta registrado...\n");
+        system("cls");
+        printf("Error, el equipo no existe o no esta registrado. Intente nuevamente...\n");
     }
 
     return flag;
@@ -456,9 +379,165 @@ int sistemaLogin(char usu[],char contra[])
     return credenciales;
 }
 
+void subMenuVerEquipos(nodoEquipo* listaEquipos)
+{
+    char nombreBuscado[35];
+    char contEquipos;
+    int flag=0;
+    do
+    {
+        system("cls");
+        flag=0;
+        while(flag==0)
+        {
+            mostrarNombresEquipos(listaEquipos);
+            printf("\nIngrese nombre del equipo cuyo plantel desee ver: \n");
+            fflush(stdin);
+            gets(nombreBuscado);
+            flag=mostrarJugadoresPorNombreEquipo(listaEquipos,nombreBuscado);
+        }
+        printf("\nDesea ver otro equipo? (s/n)\n");
+        fflush(stdin);
+        scanf("%c",&contEquipos);
+    }
+    while(contEquipos=='s');
+    system("cls");
+}
+
+void subMenuBuscarJugador(nodoarbol* arbolJugadores)
+{
+    char continuar = 's';
+    char nombreBuscado[35];
+    nodoarbol* nodoBuscado;
+
+    while(continuar=='s')
+    {
+        system("cls");
+        printf("Ingrese el nombre y apellido del jugador buscado: \n");
+        fflush(stdin);
+        gets(nombreBuscado);
+
+        nodoBuscado=buscar(arbolJugadores,nombreBuscado);
+
+        if(nodoBuscado==NULL)
+        {
+            printf("\nError.El jugador no esta registrado.\n");
+        }
+        else
+        {
+            system("cls");
+            mostrar_jugador(nodoBuscado->dato);
+        }
+        printf("Desea buscar otro jugador? (s/n)\n");
+        fflush(stdin);
+        scanf("%c",&continuar);
+    }
+    system("cls");
+}
+
+void subMenuJugar(nodoEquipo* listaEquipos)
+{
+    int opcionPartido;
+    char continuar='s';
+
+    system("cls");
+
+    do
+    {
+        printf("1- Simular Liga\n");
+        printf("2- Simular Partido\n");
+        printf("0- Volver al menu anterior\n");
+        scanf("%i", &opcionPartido);
+
+        switch(opcionPartido)
+        {
+        case 1:
+
+            break;
+        case 2:
+            while(continuar=='s')
+            {
+                subSubMenuSimularPartido(listaEquipos);
+                printf("\nDesea hacer otro amistoso? (s/n)\n");
+                fflush(stdin);
+                scanf("%c",&continuar);
+                system("cls");
+            }
+            break;
+        case 0:
+            system("cls");
+            break;
+        default:
+            system("cls");
+            printf("Opcion invalida. Ingrese nuevamente...\n");
+        }
+    }
+    while(opcionPartido!=0);
+}
+
+void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
+{
+    char nombreEquipoA[20];
+    char nombreEquipoB[20];
+    int flag=0;
+
+    system("cls");
+
+    mostrarNombresEquipos(listaEquipos);
+
+    while(flag==0)
+    {
+        printf("\nIngrese el nombre del primer equipo\n");
+        fflush(stdin);
+        gets(nombreEquipoA);
+
+        printf("\nIngrese el nombre del segundo equipo\n");
+        fflush(stdin);
+        gets(nombreEquipoB);
+
+
+        if(existeEquipo(listaEquipos,nombreEquipoA) && existeEquipo(listaEquipos,nombreEquipoB))
+        {
+            flag=1;
+        }
+        else if(existeEquipo(listaEquipos,nombreEquipoA)!=1 && existeEquipo(listaEquipos,nombreEquipoB)!=1)
+        {
+            printf("Error. Los equipos ingresados no son validos. Intente nuevamente...\n");
+        }
+        else if(existeEquipo(listaEquipos,nombreEquipoA)!=1)
+        {
+            printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoA);
+        }
+        else
+        {
+            printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoB);
+        }
+
+    }
+    system("cls");
+
+    partido partidoX;
+
+    nodoEquipo* equipoA = buscar_equipo(listaEquipos,nombreEquipoA);
+    nodoEquipo* equipoB = buscar_equipo(listaEquipos,nombreEquipoB);
+
+    simularPartido(equipoA->dato, equipoB->dato, &partidoX, 2);
+    resumenPartido(equipoA->dato, equipoB->dato, partidoX);
+
+    contarPuntosYGoles(&equipoA->dato, &equipoB->dato, partidoX);
+
+    printf("\n Puntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
+    printf("\n Puntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
+
+    printf("\n\n");
+
+    system("pause");
+
+}
+
 
 ///FUNCIONES AUXILIARES
-
+/*
 void gotoxy(int x,int y)
 {
     HANDLE hcon;
@@ -468,3 +547,4 @@ void gotoxy(int x,int y)
     dwPos.Y= y;
     SetConsoleCursorPosition(hcon,dwPos);
 }
+*/

@@ -6,17 +6,21 @@
 
 typedef struct
 {
-    int golesPartido;
-    int tarjetasPartido;
-    int golesXMinuto[20];
-    int tarjetasXMinuto[20];
+    int golesEquipoA;
+    int golesEquipoB;
+    int tarjetasEquipoA;
+    int tarjetasEquipoB;
+    int golesXMinutoEquipoA[20];
+    int golesXMinutoEquipoB[20];
+    int tarjetasXMinutoEquipoA[20];
+    int tarjetasXMinutoEquipoB[20];
 
 }partido;
 
 ///Prototipado
-void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int opcion);
-void resumenPartido(equipo equipoA, equipo equipoB, partido a, partido b);
-void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido a, partido b);
+void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion);
+void resumenPartido(equipo equipoA, equipo equipoB, partido x);
+void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x);
 int simularGol();
 int simularTarjeta();
 

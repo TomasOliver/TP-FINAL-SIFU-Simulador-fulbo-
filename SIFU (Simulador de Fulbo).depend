@@ -184,3 +184,111 @@
 	"partido.h"
 	"equipo.h"
 
+1700004582 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\equipo.c
+	"equipo.h"
+
+1700004582 c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\equipo.h
+
+1700004582 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1700004582 c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\jugador.h
+
+1700004582 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1700004582 c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1700004582 c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\sublista.h
+	"jugador.h"
+
+1700062184 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+	"partido.h"
+
+1700060673 c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\partido.h
+	"equipo.h"
+
+1700004582 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1700061217 source:c:\users\usuario\desktop\tp-final-sifu-simulador-fulbo--main\partido.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+	"partido.h"
+	"equipo.h"
+
+1700004582 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\equipo.c
+	"equipo.h"
+
+1700004582 c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\equipo.h
+
+1700004582 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1700004582 c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\jugador.h
+
+1700356578 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1700004582 c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1700004582 c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\sublista.h
+	"jugador.h"
+
+1700061218 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\partido.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+	"partido.h"
+	"equipo.h"
+
+1700060674 c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\partido.h
+	"equipo.h"
+
+1700004582 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1700357186 source:c:\users\mauro\desktop\tp-final-sifu-simulador-fulbo--main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<windows.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+	"partido.h"
+

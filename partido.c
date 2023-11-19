@@ -5,13 +5,13 @@
 #include "partido.h"
 #include "equipo.h"
 
-void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int opcion)
+void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
 {
 
-    a->golesPartido = 0;
-    b->golesPartido = 0;
-    a->tarjetasPartido = 0;
-    b->tarjetasPartido = 0;
+    x->golesEquipoA = 0;
+    x->golesEquipoB = 0;
+    x->tarjetasEquipoA = 0;
+    x->tarjetasEquipoB = 0;
 
     srand(time(NULL));
 
@@ -26,14 +26,14 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int 
         {
             if (rand() % 2 == 0)
             {
-                a->golesPartido++;
-                a->golesXMinuto[ga] = minuto;
+                x->golesEquipoA++;
+                x->golesXMinutoEquipoA[ga] = minuto;
                 ga++;
             }
             else
             {
-                b->golesPartido++;
-                b->golesXMinuto[gb] = minuto;
+                x->golesEquipoB++;
+                x->golesXMinutoEquipoB[gb] = minuto;
                 gb++;
             }
         }
@@ -42,19 +42,19 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int 
         {
             if (rand() % 2 == 0)
             {
-                a->tarjetasPartido++;
-                a->tarjetasXMinuto[ta] = minuto;
+                x->tarjetasEquipoA++;
+                x->tarjetasXMinutoEquipoA[ta] = minuto;
                 ta++;
             }
             else
             {
-                b->tarjetasPartido++;
-                b->tarjetasXMinuto[tb] = minuto;
+                x->tarjetasEquipoB++;
+                x->tarjetasXMinutoEquipoB[tb] = minuto;
                 tb++;
             }
         }
 
-        printf("\r%s %i - %2d' - %i %s",equipoA.nombreEquipo,a->golesPartido,minuto,b->golesPartido,equipoB.nombreEquipo);
+        printf("\r%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
 
         fflush(stdout);
 
@@ -64,17 +64,17 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* a, partido* b, int 
         }
     }
 
-    printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, a->golesPartido, b->golesPartido, equipoB.nombreEquipo);
-    printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, a->tarjetasPartido, b->tarjetasPartido, equipoB.nombreEquipo);
+    printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, x->golesEquipoA, x->golesEquipoB, equipoB.nombreEquipo);
+    printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, x->tarjetasEquipoA, x->tarjetasEquipoB, equipoB.nombreEquipo);
 }
 
-void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido a, partido b)
+void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
 {
-    if(a.golesPartido > b.golesPartido)
+    if(x.golesEquipoA > x.golesEquipoB)
     {
         equipoA->puntosEquipo += 3;
     }
-    else if(a.golesPartido < b.golesPartido)
+    else if(x.golesEquipoA < x.golesEquipoB)
     {
         equipoB->puntosEquipo += 3;
     }
@@ -82,13 +82,14 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido a, partido b)
     {
         equipoA->puntosEquipo += 1;
         equipoB->puntosEquipo += 1;
+
     }
 
-    equipoA->golesEquipo += a.golesPartido;
-    equipoB->golesEquipo += b.golesPartido;
+    equipoA->golesEquipo += x.golesEquipoA;
+    equipoB->golesEquipo += x.golesEquipoB;
 }
 
-void resumenPartido(equipo equipoA, equipo equipoB, partido a, partido b)
+void resumenPartido(equipo equipoA, equipo equipoB, partido x)
 {
     int contGA=0;
     int contGB=0;
@@ -99,24 +100,24 @@ void resumenPartido(equipo equipoA, equipo equipoB, partido a, partido b)
 
     while(i<=90)
     {
-        if(a.golesXMinuto[contGA]==i)
+        if(x.golesXMinutoEquipoA[contGA]==i)
         {
-            printf("\nGol de %s en el minuto %i",equipoA.nombreEquipo,a.golesXMinuto[contGA]);
+            printf("\nGol de %s en el minuto %i",equipoA.nombreEquipo,x.golesXMinutoEquipoA[contGA]);
             contGA++;
         }
-        if(a.tarjetasXMinuto[contTA]==i)
+        if(x.tarjetasXMinutoEquipoA[contTA]==i)
         {
-            printf("\nTarjeta de %s en el minuto %i",equipoA.nombreEquipo,a.tarjetasXMinuto[contTA]);
+            printf("\nTarjeta de %s en el minuto %i",equipoA.nombreEquipo,x.tarjetasXMinutoEquipoA[contTA]);
             contTA++;
         }
-        if(b.golesXMinuto[contGB]==i)
+        if(x.golesXMinutoEquipoB[contGB]==i)
         {
-            printf("\nGol de %s en el minuto %i",equipoB.nombreEquipo,b.golesXMinuto[contGB]);
+            printf("\nGol de %s en el minuto %i",equipoB.nombreEquipo,x.golesXMinutoEquipoB[contGB]);
             contGB++;
         }
-        if(b.tarjetasXMinuto[contTB]==i)
+        if(x.tarjetasXMinutoEquipoB[contTB]==i)
         {
-            printf("\nTarjeta de %s en el minuto %i",equipoB.nombreEquipo,b.tarjetasXMinuto[contTB]);
+            printf("\nTarjeta de %s en el minuto %i",equipoB.nombreEquipo,x.tarjetasXMinutoEquipoB[contTB]);
             contTB++;
         }
         i++;
