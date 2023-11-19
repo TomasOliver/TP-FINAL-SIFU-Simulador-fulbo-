@@ -346,3 +346,15 @@
 	<stdlib.h>
 	<windows.h>
 
+1700368686 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+	"partido.h"
+	"gotoxy.h"
+
+1700367231 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.h
+

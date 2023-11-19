@@ -182,13 +182,31 @@ int main()
 void menuInicial()
 {
     system("cls");
-    system("COLOR 0F");
-    printf("  _____   _____  ______   _    _ \n");
-    printf(" / ____| |_   _| |  ___| | |  | |\n");
-    printf("| (___     | |   | |_    | |  | |\n");
-    printf(" \\___ \\    | |   |  _|   | |  | |\n");
-    printf(" ____) |  _| |_  | |     | |__| |\n");
-    printf("|_____/  |_____| |_|      \\____/ \n");
+    system("COLOR 2B");
+
+    gotoxy(40,5);
+    color(2);
+    printf("     _____   _____  ______   _          \n");
+    gotoxy(40,6);
+    color(2);
+    printf("    / ____| |_   _| |  ___| | |  | |    \n");
+    gotoxy(40,7);
+    color(2);
+    printf("   | (___     | |   | |_    | |  | |    \n");
+    gotoxy(40,8);
+    color(2);
+    printf("    \\___ \\    | |   |  _|   | |  | |    \n");
+    gotoxy(40,9);
+    color(2);
+    printf("    ____) |  _| |_  | |     | |__| |    \n");
+    gotoxy(40,10);
+    color(2);
+    printf("   |_____/  |_____| |_|      \\____/     \n");
+    gotoxy(40,11);
+    color(2);
+    printf("                                        \n");
+    printf("\n\n");
+    gotoxy(40,12);
     system("pause");
 }
 
