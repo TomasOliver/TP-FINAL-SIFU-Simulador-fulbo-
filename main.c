@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
-#include <windows.h>
 #include "string.h"
 #include "equipo.h"
 #include "jugador.h"
 #include "listaPPL.h"
 #include "partido.h"
+#include "gotoxy.h"
 
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
@@ -47,6 +46,8 @@ void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
 
+void menuInicialDos();
+
 ///MAIN
 int main()
 {
@@ -78,11 +79,12 @@ int main()
 
 ///MENU
 
-    //menuInicial();
+
 
     do
     {
-        //system("cls");
+        menuInicial();
+        system("cls");
 
         printf("MENU\n\n");
         printf("1- Jugar\n");
@@ -176,24 +178,39 @@ int main()
 }
 
 ///FUNCIONES
-/*
+
 void menuInicial()
 {
     system("cls");
     system("COLOR 0F");
-    gotoxy(35,5);
-    printf("\n  #####      ###     #######     #     #");
-    gotoxy(5000,6);
-    printf("\n #     #      #      #           #     #");
-    printf("\n #            #      #           #     #");
-    printf("\n  #####       #      #####       #     #");
-    printf("\n       #      #      #           #     #");
-    printf("\n #     # ###  #  ### #       ### #     #");
-    printf("\n  #####  ### ### ### #       ###  ##### ");
-    printf("\n\n");
+    printf("       __        \n");
+    printf(" / _| |   | |  | | |  | |\n");
+    printf("| (     | |   | |    | |  | |\n");
+    printf(" \_ \    | |   |  |   | |  | |\n");
+    printf(" __) |  | |  | |     | || |\n");
+    printf("|__/  |__| ||      \__/ \n");
     system("pause");
 }
-*/
+
+void menuInicialDos()
+{
+    gotoxy(35,5);
+    printf("  __   __  __   _    _ \n");
+    gotoxy(35,6);
+    printf(" / _| |   | |  __| | |  | |\n");
+    gotoxy(35,7);
+    printf("| (_     | |   | |_    | |  | |\n");
+    gotoxy(35,8);
+    printf(" \\_ \\    | |   |  _|   | |  | |\n");
+    gotoxy(35,9);
+    printf(" _) |  _| |  | |     | |__| |\n");
+    gotoxy(35,10);
+    printf("|__/  |_| ||      \\__/ \n\n");
+    printf("(SIMULADOR DE FULBO)\n\n");
+
+    system("pause");
+}
+
 void cargarArchivo()
 {
     FILE* archi = fopen(nombreArchivo,"wb");
@@ -534,17 +551,3 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
     system("pause");
 
 }
-
-
-///FUNCIONES AUXILIARES
-/*
-void gotoxy(int x,int y)
-{
-    HANDLE hcon;
-    hcon = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD dwPos;
-    dwPos.X = x;
-    dwPos.Y= y;
-    SetConsoleCursorPosition(hcon,dwPos);
-}
-*/

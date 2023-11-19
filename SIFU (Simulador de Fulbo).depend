@@ -130,53 +130,52 @@
 	"string.h"
 	"subLista.h"
 
-1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.c
+1700004582 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.c
 	"equipo.h"
 
-1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
+1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
 
-1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
+1700004582 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"jugador.h"
 
-1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
+1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700021255 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
+1700356578 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700021216 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
+1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
-1699936765 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.h
+1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.h
 	"jugador.h"
 
-1699936765 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.c
+1700004582 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"subLista.h"
 
-1700021913 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
+1700366864 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
-	<conio.h>
-	<windows.h>
 	"string.h"
 	"equipo.h"
 	"jugador.h"
 	"listaPPL.h"
 	"partido.h"
+	"gotoxy.h"
 
-1700022490 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.h
+1700060674 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.h
 	"equipo.h"
 
-1700022490 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.c
+1700061218 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -291,4 +290,11 @@
 	"jugador.h"
 	"listaPPL.h"
 	"partido.h"
+
+1491400450 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1491399896 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
