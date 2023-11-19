@@ -46,8 +46,6 @@ void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
 
-void menuInicialDos();
-
 ///MAIN
 int main()
 {
@@ -182,50 +180,35 @@ int main()
 void menuInicial()
 {
     system("cls");
-    system("COLOR 2B");
+    system("COLOR 0");
 
     gotoxy(40,5);
-    color(2);
-    printf("     _____   _____  ______   _          \n");
+    color(176);
+    printf("     _____   _____   _____   _    _     \n");
     gotoxy(40,6);
-    color(2);
+    color(176);
     printf("    / ____| |_   _| |  ___| | |  | |    \n");
     gotoxy(40,7);
-    color(2);
+    color(176);
     printf("   | (___     | |   | |_    | |  | |    \n");
     gotoxy(40,8);
-    color(2);
+    color(176);
     printf("    \\___ \\    | |   |  _|   | |  | |    \n");
     gotoxy(40,9);
-    color(2);
+    color(176);
     printf("    ____) |  _| |_  | |     | |__| |    \n");
     gotoxy(40,10);
-    color(2);
+    color(176);
     printf("   |_____/  |_____| |_|      \\____/     \n");
     gotoxy(40,11);
-    color(2);
+    color(176);
     printf("                                        \n");
+    color(7);
     printf("\n\n");
-    gotoxy(40,12);
-    system("pause");
-}
-
-void menuInicialDos()
-{
-    gotoxy(35,5);
-    printf("  __   __  __   _    _ \n");
-    gotoxy(35,6);
-    printf(" / _| |   | |  __| | |  | |\n");
-    gotoxy(35,7);
-    printf("| (_     | |   | |_    | |  | |\n");
-    gotoxy(35,8);
-    printf(" \\_ \\    | |   |  _|   | |  | |\n");
-    gotoxy(35,9);
-    printf(" _) |  _| |  | |     | |__| |\n");
-    gotoxy(35,10);
-    printf("|__/  |_| ||      \\__/ \n\n");
-    printf("(SIMULADOR DE FULBO)\n\n");
-
+    gotoxy(49,13);
+    printf("\x4 SIMULADOR DE FULBO \x4");
+    color(7);
+    gotoxy(40,15);
     system("pause");
 }
 
