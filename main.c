@@ -183,12 +183,12 @@ void menuInicial()
 {
     system("cls");
     system("COLOR 0F");
-    printf("       __        \n");
-    printf(" / _| |   | |  | | |  | |\n");
-    printf("| (     | |   | |    | |  | |\n");
-    printf(" \_ \    | |   |  |   | |  | |\n");
-    printf(" __) |  | |  | |     | || |\n");
-    printf("|__/  |__| ||      \__/ \n");
+    printf("  _____   _____  ______   _    _ \n");
+    printf(" / ____| |_   _| |  ___| | |  | |\n");
+    printf("| (___     | |   | |_    | |  | |\n");
+    printf(" \\___ \\    | |   |  _|   | |  | |\n");
+    printf(" ____) |  _| |_  | |     | |__| |\n");
+    printf("|_____/  |_____| |_|      \\____/ \n");
     system("pause");
 }
 

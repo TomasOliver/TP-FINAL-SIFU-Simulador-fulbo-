@@ -298,3 +298,51 @@
 
 1491399896 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
+1699909516 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\equipo.c
+	"equipo.h"
+
+1699910832 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\equipo.h
+
+1699928581 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1699913604 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\jugador.h
+
+1700021953 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1700021953 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1699458356 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\sublista.h
+	"jugador.h"
+
+1700362407 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\partido.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+	"partido.h"
+	"equipo.h"
+
+1700362407 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\partido.h
+	"equipo.h"
+
+1699458366 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1700367231 source:c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
