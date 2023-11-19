@@ -109,3 +109,56 @@ int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
 
     return flag;
 }
+
+void AgregarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,jugador j)
+{
+    if(existeJugador(arbolJugadores,j.nombreJugador)==1)
+    {
+        printf("\nError. El jugador ya se encuentra registrado...\n");
+    }
+    else
+    {
+        int flag=0;
+        char nombreEquipo[30];
+        equipo e;
+        mostrarNombresEquipos(listaPpl);
+
+        while(flag==0)
+        {
+            printf("Ingrese el nombre del equipo donde desea registrar al jugador: \n");
+            fflush(stdin);
+            gets(nombreEquipo);
+
+            if(existeEquipo(listaPpl,nombreEquipo)==0)
+            {
+                printf("\nError. El equipo no existe o no esta registrado. Intente nuevamente...\n");
+            }
+            else
+            {
+                flag=1;
+                e=retornarEquipo(listaPpl,nombreEquipo);
+            }
+        }
+
+        nodoarbol* nuevoNodo=crear_nodo_arbol(j);
+        insertar_nodo_arbol(arbolJugadores,nuevoNodo);
+
+        alta(listaPpl,e,j); //Para cargarlo en la LISTA DE LISTAS
+    }
+}
+
+equipo retornarEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
+{
+    equipo e;
+    while(listaPpl!=NULL)
+    {
+        if(strcmp(nombreEquipo,listaPpl->dato.nombreEquipo)==0)
+        {
+            e=listaPpl->dato;
+        }
+        listaPpl=listaPpl->siguiente;
+    }
+    return e;
+}
+
+

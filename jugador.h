@@ -25,10 +25,16 @@ typedef struct nodoarbol
 ///Prototipado
 jugador cargar_jugador();
 void mostrar_jugador(jugador a);
+jugador validarEdadJugador(jugador j);
+jugador validarCalidadJugador(jugador j);
+jugador validarPiernaHabilJugador(jugador j);
+jugador validarPosicionJugador(jugador j);
+
 
 nodoarbol* inicArbol();
 nodoarbol* crear_nodo_arbol(jugador dato);
 nodoarbol* buscar(nodoarbol* arbol,char nombre[]);
+int existeJugador(nodoarbol* arbol,char nombre[]);
 nodoarbol* insertar_nodo_arbol(nodoarbol* arbol,nodoarbol* nuevo_nodo);
 void preorder(nodoarbol* arbol);
 void inorder(nodoarbol* arbol);

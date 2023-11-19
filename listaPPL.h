@@ -19,6 +19,8 @@ nodoEquipo* crear_nodo_equipo(equipo e);
 nodoEquipo* agregar_final_equipo(nodoEquipo* lista,nodoEquipo* nuevo_nodo);
 nodoEquipo* buscar_nodo_final_equipo(nodoEquipo* lista);
 int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
+equipo retornarEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
+void AgregarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,jugador j);
 
 
 #endif // LISTA_PPL_H_INCLUDED

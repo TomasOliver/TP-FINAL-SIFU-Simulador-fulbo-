@@ -76,12 +76,11 @@ int main()
     system("title=S.I.F.U (Simulador de Fulbo)");
 
 ///MENU
-
-
+    cargar_jugador();
+    menuInicial();
 
     do
     {
-        menuInicial();
         system("cls");
 
         printf("MENU\n\n");
@@ -337,11 +336,9 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol)
 
 void mostrarNombresEquipos(nodoEquipo* LDL) ///Sacar
 {
-    int i=1;
     while(LDL!=NULL)
     {
         printf("-%s\n",LDL->dato.nombreEquipo);
-        i++;
         LDL=LDL->siguiente;
     }
 }
@@ -552,3 +549,8 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
     system("pause");
 
 }
+
+
+
+
+
