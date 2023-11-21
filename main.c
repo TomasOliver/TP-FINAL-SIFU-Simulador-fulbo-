@@ -76,7 +76,7 @@ int main()
     system("title=S.I.F.U (Simulador de Fulbo)");
 
 ///MENU
-    cargar_jugador();
+    //cargar_jugador();
     menuInicial();
 
     do
@@ -541,8 +541,8 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
     contarPuntosYGoles(&equipoA->dato, &equipoB->dato, partidoX);
 
-    printf("\n Puntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
-    printf("\n Puntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
+    printf("\nPuntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
+    printf("\nPuntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
 
     printf("\n\n");
 

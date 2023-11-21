@@ -135,21 +135,21 @@
 
 1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
 
-1700004582 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
+1700508755 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"jugador.h"
 
-1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
+1700508755 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700356578 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
+1700508755 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700004582 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
+1700508755 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
@@ -162,7 +162,7 @@
 	"string.h"
 	"subLista.h"
 
-1700369548 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
+1700598985 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
