@@ -23,11 +23,18 @@ equipo retornarEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
 void AgregarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,jugador j);
 nodoJugador* buscarJugadorEnLDL(nodoEquipo* listaPpl,char nombreJugador[]);
 jugador validarNombreJugador(nodoarbol* arbolJugadores,jugador j);
+nodoEquipo* buscarEquipoEnLDL(nodoEquipo* listaPpl,char nombreEquipo[]);
 
 ///Alta-Baja-Modificacion-Consulta de jugador
 void altaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
 void bajaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
 void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreBuscado[]);
+//La consulta es la funcion subMenuBuscarJugador
+
+///Alta-Baja-Modificacion-Consulta de equipo
+void altaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[]);
+void bajaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[]);
+
 
 
 

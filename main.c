@@ -17,7 +17,6 @@ const char contraAdmin[20] = "admin";
 typedef struct
 {
     char nombreEquipo[50];
-    char nacionalidadEquipo[50];
     int calidadEquipo;
     char nombreJugador[40];
     char nacionalidadJugador[20];
@@ -27,6 +26,12 @@ typedef struct
     char posicion[20];
     int puntosEquipo;
     int golesEquipo;
+    int estadoJugador; //1 activo - 2 inactivo
+    int estadoEquipo; //1 activo - 2 inactivo
+    int partidosJugados;
+    int partidosGanados;
+    int partidosEmpatados;
+    int partidosPerdidos;
 } registroArchivo;
 
 ///Prototipado
@@ -65,7 +70,7 @@ int main()
     nodoarbol* arbolJugadores=inicArbol();
     arbolJugadores=pasar_archivo_a_arbol(arbolJugadores);
 
-    // inorder(arbolJugadores);
+    //inorder(arbolJugadores);
 
 
     int opcion,opcionAdmin,guardado;
@@ -78,13 +83,15 @@ int main()
 
     system("title=S.I.F.U (Simulador de Fulbo)");
 
+
+
+
 ///MENU
-    modificarJugador(listaEquipos,arbolJugadores,"Enzo Perez");
-    //menuInicial();
+    menuInicial();
 
     do
     {
-        //system("cls");
+        system("cls");
 
         printf("MENU\n\n");
         printf("1- Jugar\n");
@@ -92,6 +99,7 @@ int main()
         printf("3- Buscar jugador\n");
         printf("0- Salir del programa\n");
 
+        fflush(stdin);
         scanf("%i", &opcion);
 
         switch (opcion)
@@ -270,7 +278,7 @@ jugador pasarJugador(registroArchivo aux)
     strcpy(j.nombreJugador, aux.nombreJugador);
     strcpy(j.piernaHabil, aux.piernaHabil);
     strcpy(j.posicion, aux.posicion);
-    j.estadoJugador = 1;
+    j.estadoJugador = aux.estadoJugador;
 
     return j;
 }
@@ -278,13 +286,15 @@ jugador pasarJugador(registroArchivo aux)
 equipo pasarEquipo(registroArchivo aux)
 {
     equipo e;
-
     e.calidadEquipo=aux.calidadEquipo;
-    strcpy(e.nacionalidadEquipo, aux.nacionalidadEquipo);
     strcpy(e.nombreEquipo,aux.nombreEquipo);
-    e.puntosEquipo = 0;
-    e.golesEquipo = 0;
-    e.estadoEquipo = 1;
+    e.puntosEquipo = aux.puntosEquipo;
+    e.golesEquipo = aux.golesEquipo;
+    e.estadoEquipo = aux.estadoEquipo;
+    e.partidosEmpatados=aux.partidosEmpatados;
+    e.partidosGanados=aux.partidosGanados;
+    e.partidosPerdidos=aux.partidosPerdidos;
+    e.partidosJugados=aux.partidosJugados;
 
     return e;
 }
@@ -296,9 +306,6 @@ registroArchivo cargarRegistro()
     printf("Ingrese nombre del equipo: \n");
     fflush(stdin);
     gets(aux.nombreEquipo);
-    printf("Ingrese nacionalidad del equipo: \n");
-    fflush(stdin);
-    gets(aux.nacionalidadEquipo);
     printf("Ingrese calidad del equipo: \n");
     scanf("%i",&aux.calidadEquipo);
     printf("Ingrese nombre y apellido del jugador: \n");
@@ -319,6 +326,13 @@ registroArchivo cargarRegistro()
     gets(aux.posicion);
 
     aux.puntosEquipo=0;
+    aux.golesEquipo=0;
+    aux.estadoJugador=1; //1 activo - 2 de baja
+    aux.estadoEquipo=1; //1 activo - 2 de baja
+    aux.partidosJugados=0;
+    aux.partidosGanados=0;
+    aux.partidosEmpatados=0;
+    aux.partidosPerdidos=0;
 
     return aux;
 }
@@ -327,7 +341,14 @@ void mostrarLDL(nodoEquipo* LDL)
 {
     while(LDL!=NULL)
     {
-        printf("\n\n-----------Equipo: %s - Calidad equipo:%i - Nacionalidad:%s  ------------\n\n",LDL->dato.nombreEquipo,LDL->dato.calidadEquipo,LDL->dato.nacionalidadEquipo);
+        if(LDL->dato.estadoEquipo==1)
+        {
+            printf("\n\n-----------Equipo: %s - Calidad equipo:%i - Estado equipo:%s  ------------\n\n",LDL->dato.nombreEquipo,LDL->dato.calidadEquipo,"Alta");
+        }
+        else
+        {
+            printf("\n\n-----------Equipo: %s - Calidad equipo:%i - Estado equipo:%s  ------------\n\n",LDL->dato.nombreEquipo,LDL->dato.calidadEquipo,"De baja");
+        }
         mostrar_lista_jugadores(LDL->listaDeJugadores);
         LDL=LDL->siguiente;
     }

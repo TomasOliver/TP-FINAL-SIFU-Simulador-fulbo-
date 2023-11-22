@@ -340,6 +340,62 @@ jugador validarNombreJugador(nodoarbol* arbolJugadores,jugador j)
     return j;
 }
 
+void altaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[])
+{
+    if(existeEquipo(listaPpl,nombreEquipo)==1)
+    {
+        nodoEquipo* nodoEquipoBuscado=buscarEquipoEnLDL(listaPpl,nombreEquipo);
+        if(nodoEquipoBuscado->dato.estadoEquipo==0)
+        {
+            nodoEquipoBuscado->dato.estadoEquipo=1;
+        }
+        else
+        {
+            printf("\nError. El equipo ya se encuentra dado de alta\n");
+        }
+    }
+    else
+    {
+        printf("\nError. El equipo no existe o no se encuentra registrado...\n");
+    }
+}
+
+void bajaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[])
+{
+    if(existeEquipo(listaPpl,nombreEquipo)==1)
+    {
+        nodoEquipo* nodoEquipoBuscado=buscarEquipoEnLDL(listaPpl,nombreEquipo);
+        if(nodoEquipoBuscado->dato.estadoEquipo==1)
+        {
+            nodoEquipoBuscado->dato.estadoEquipo=0;
+        }
+        else
+        {
+            printf("\nError. El equipo ya se encuentra dado de baja\n");
+        }
+    }
+    else
+    {
+        printf("\nError. El equipo no existe o no se encuentra registrado...\n");
+    }
+}
+
+nodoEquipo* buscarEquipoEnLDL(nodoEquipo* listaPpl,char nombreEquipo[])
+{
+    nodoEquipo* nodoBuscado=NULL;
+
+    while(listaPpl!=NULL && nodoBuscado==NULL)
+    {
+        if(strcmp(nombreEquipo,listaPpl->dato.nombreEquipo)==0)
+        {
+            nodoBuscado=listaPpl;
+        }
+        listaPpl=listaPpl->siguiente;
+    }
+
+    return nodoBuscado;
+}
+
 
 
 

@@ -361,7 +361,7 @@
 1700664864 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.c
 	"equipo.h"
 
-1700666153 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
+1700682442 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
 
 1700680196 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
@@ -371,13 +371,13 @@
 
 1700679416 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700680409 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
+1700684343 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700679467 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
+1700684397 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
@@ -401,7 +401,7 @@
 	"string.h"
 	"subLista.h"
 
-1700680394 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
+1700685051 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"

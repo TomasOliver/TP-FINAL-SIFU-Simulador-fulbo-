@@ -6,7 +6,6 @@
 typedef struct
 {
     char nombreEquipo[50];
-    char nacionalidadEquipo[50];
     int calidadEquipo;
     int puntosEquipo;
     int golesEquipo;
