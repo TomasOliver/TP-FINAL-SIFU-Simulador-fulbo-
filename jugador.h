@@ -11,6 +11,7 @@ typedef struct
     int edad;
     char piernaHabil[10];
     char posicion[20];;
+    int estadoJugador; //1 activo - 2 inactivo
 } jugador;
 
 typedef struct nodoarbol
@@ -19,7 +20,6 @@ typedef struct nodoarbol
     struct nodoarbol* izq;
     struct nodoarbol* der;
 } nodoarbol;
-
 
 
 ///Prototipado
@@ -39,6 +39,11 @@ nodoarbol* insertar_nodo_arbol(nodoarbol* arbol,nodoarbol* nuevo_nodo);
 void preorder(nodoarbol* arbol);
 void inorder(nodoarbol* arbol);
 void postorder(nodoarbol* arbol);
+nodoarbol* nodoMasIzquierda(nodoarbol* arbol);
+nodoarbol* nodoMasDerecha(nodoarbol* arbol);
+int esHoja(nodoarbol * arbol);
+int esGrado1(nodoarbol * arbol);
+nodoarbol* borrarNodoArbol(nodoarbol* arbol, char nombreBuscado[]);
 
 
 #endif // JUGADOR_H_INCLUDED

@@ -358,33 +358,33 @@
 
 1700367231 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
-1699936541 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.c
+1700664864 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.c
 	"equipo.h"
 
-1700019842 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
+1700666153 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
 
-1700432890 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.c
+1700680196 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"jugador.h"
 
-1700432779 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.h
+1700679416 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700430051 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
+1700680409 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700430051 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
+1700679467 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
-1699936541 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.h
+1700671023 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.h
 	"jugador.h"
 
-1700423196 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.c
+1700664864 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -395,13 +395,13 @@
 1700423196 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.h
 	"equipo.h"
 
-1699936541 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.c
+1700675401 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"subLista.h"
 
-1700430591 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
+1700680394 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -410,6 +410,7 @@
 	"listaPPL.h"
 	"partido.h"
 	"gotoxy.h"
+	"torneo.h"
 
 1700423195 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
@@ -417,4 +418,13 @@
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
+
+1700665721 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.h
+	"equipo.h"
+
+1700665801 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"torneo.h"
 

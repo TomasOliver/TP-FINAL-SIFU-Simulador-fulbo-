@@ -21,6 +21,14 @@ nodoEquipo* buscar_nodo_final_equipo(nodoEquipo* lista);
 int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
 equipo retornarEquipo(nodoEquipo* listaPpl,char nombreEquipo[]);
 void AgregarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,jugador j);
+nodoJugador* buscarJugadorEnLDL(nodoEquipo* listaPpl,char nombreJugador[]);
+jugador validarNombreJugador(nodoarbol* arbolJugadores,jugador j);
+
+///Alta-Baja-Modificacion-Consulta de jugador
+void altaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
+void bajaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
+void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreBuscado[]);
+
 
 
 #endif // LISTA_PPL_H_INCLUDED

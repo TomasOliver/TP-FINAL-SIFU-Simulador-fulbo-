@@ -34,6 +34,8 @@ typedef struct
 void menuInicial();
 void cargarArchivo();
 registroArchivo cargarRegistro();
+jugador pasarJugador(registroArchivo aux);
+equipo pasarEquipo(registroArchivo aux);
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl);
 void mostrarLDL(nodoEquipo* LDL);
 nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
@@ -77,12 +79,12 @@ int main()
     system("title=S.I.F.U (Simulador de Fulbo)");
 
 ///MENU
-    //cargar_jugador();
-    menuInicial();
+    modificarJugador(listaEquipos,arbolJugadores,"Enzo Perez");
+    //menuInicial();
 
     do
     {
-        system("cls");
+        //system("cls");
 
         printf("MENU\n\n");
         printf("1- Jugar\n");
@@ -247,24 +249,44 @@ nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl)
     {
         while(fread(&aux,sizeof(registroArchivo),1,archi)>0)
         {
-            j.calidadJugador=aux.calidadJugador;
-            j.edad = aux.edad;
-            strcpy(j.nacionalidadJugador, aux.nacionalidadJugador);
-            strcpy(j.nombreJugador, aux.nombreJugador);
-            strcpy(j.piernaHabil, aux.piernaHabil);
-            strcpy(j.posicion, aux.posicion);
+            j=pasarJugador(aux);
 
-            e.calidadEquipo=aux.calidadEquipo;
-            strcpy(e.nacionalidadEquipo, aux.nacionalidadEquipo);
-            strcpy(e.nombreEquipo,aux.nombreEquipo);
-            e.puntosEquipo = 0;
-            e.golesEquipo = 0;
+            e=pasarEquipo(aux);
 
             listaPpl = alta(listaPpl,e,j);
         }
         fclose(archi);
     }
     return listaPpl;
+}
+
+jugador pasarJugador(registroArchivo aux)
+{
+    jugador j;
+
+    j.calidadJugador=aux.calidadJugador;
+    j.edad = aux.edad;
+    strcpy(j.nacionalidadJugador, aux.nacionalidadJugador);
+    strcpy(j.nombreJugador, aux.nombreJugador);
+    strcpy(j.piernaHabil, aux.piernaHabil);
+    strcpy(j.posicion, aux.posicion);
+    j.estadoJugador = 1;
+
+    return j;
+}
+
+equipo pasarEquipo(registroArchivo aux)
+{
+    equipo e;
+
+    e.calidadEquipo=aux.calidadEquipo;
+    strcpy(e.nacionalidadEquipo, aux.nacionalidadEquipo);
+    strcpy(e.nombreEquipo,aux.nombreEquipo);
+    e.puntosEquipo = 0;
+    e.golesEquipo = 0;
+    e.estadoEquipo = 1;
+
+    return e;
 }
 
 registroArchivo cargarRegistro()
@@ -321,12 +343,7 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol)
     {
         while(fread(&aux,sizeof(registroArchivo),1,archi)>0)
         {
-            j.calidadJugador=aux.calidadJugador;
-            j.edad = aux.edad;
-            strcpy(j.nacionalidadJugador, aux.nacionalidadJugador);
-            strcpy(j.nombreJugador, aux.nombreJugador);
-            strcpy(j.piernaHabil, aux.piernaHabil);
-            strcpy(j.posicion, aux.posicion);
+            j=pasarJugador(aux);
 
             arbol = insertar_nodo_arbol(arbol,crear_nodo_arbol(j));
         }
@@ -551,22 +568,22 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
 }
 
-
+/*
 void subMenuJugarTorneo(nodoEquipo * listaEquipos)
 {
     nodoTorneo * tabla = inicListaTorneo();
-    tabla = pasarListaPPLATabla(listaEquipos,tabla)
+    tabla = pasarListaPPLATabla(listaEquipos,tabla);
 
     printf("\nTorneo SIFU:");
     mostrarTabla(tabla);
-    /*
+
     char continuarFecha = 's';
     int contarFecha = 0;
     while(continuarFecha = 's')
     {
         simularPartido(arr)
     }
-    */
+
 
 }
 
@@ -582,3 +599,4 @@ nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos, nodoTorneo * tabla)
     }
     return tabla;
 }
+*/

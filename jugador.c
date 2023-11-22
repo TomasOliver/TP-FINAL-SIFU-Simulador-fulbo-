@@ -121,6 +121,97 @@ void postorder(nodoarbol* arbol)
     }
 }
 
+nodoarbol* nodoMasIzquierda(nodoarbol* arbol)
+{
+    if(arbol)
+    {
+        if(arbol->izq != NULL)
+        {
+            arbol = nodoMasIzquierda(arbol->izq);
+        }
+    }
+    return arbol;//si el arbol esta vacio retorna NULL
+}
+
+
+nodoarbol* nodoMasDerecha(nodoarbol* arbol)
+{
+    if(arbol)
+    {
+        if(arbol->der != NULL)
+        {
+            arbol = nodoMasDerecha(arbol->der);
+        }
+    }
+    return arbol;
+}
+
+
+int esHoja(nodoarbol * arbol)
+{
+    int rta=0;
+
+    if(arbol)
+    {
+        if(arbol->izq==NULL && arbol->der==NULL)
+        {
+            rta=1;
+        }
+    }
+    return rta;
+}
+
+int esGrado1(nodoarbol * arbol)
+{
+    int rta=0;
+
+    if(arbol)
+    {
+        if( (arbol->izq==NULL && arbol->der!=NULL) || (arbol->izq!=NULL && arbol->der==NULL) )
+        {
+            rta=1;
+        }
+    }
+    return rta;
+}
+
+nodoarbol* borrarNodoArbol(nodoarbol* arbol, char nombreBuscado[])
+{
+    if(arbol!=NULL)  // cond corte y sol triv implicita: no hace nada y retorna arbol, que va a ser NULL)
+    {
+        if(strcmpi(nombreBuscado,arbol->dato.nombreJugador)>0)
+        {
+            arbol->der = borrarNodoArbol(arbol->der, nombreBuscado); // si el dato buscado es mayor, busca por la dcha
+        }
+        else if (strcmpi(nombreBuscado,arbol->dato.nombreJugador)<0)
+        {
+            arbol->izq = borrarNodoArbol(arbol->izq, nombreBuscado); //si el dato buscado es menor, busca por la izq
+        }
+        else if (strcmpi(nombreBuscado,arbol->dato.nombreJugador)==0)   // si lo encontró (si no es < ni > ni llego al final es pq lo encontró)
+        {
+            if(arbol->izq != NULL)          ///si tiene un izquierdo
+            {
+                nodoarbol* masDer = nodoMasDerecha(arbol->izq);
+                arbol->dato = masDer->dato;  //al nodo a borrar le asigno como nuevo dato el del nodo mas derecho de la rama izquierda (el mas grande de los menores)
+                arbol->izq = borrarNodoArbol(arbol->izq, arbol->dato.nombreJugador); //y ahora busco y borro del lado izq el nodo que "subí"
+            }
+            else if(arbol->der != NULL)     /// si tiene un derecho
+            {
+                nodoarbol* masIzq = nodoMasIzquierda(arbol->der);
+                arbol->dato = masIzq->dato;  //al nodo a borrar le asigno como nuevo dato el del mas izq de la rama derecha (el mas chico de los mayores)
+                arbol->der = borrarNodoArbol(arbol->der, arbol->dato.nombreJugador); //y ahora busco y borro del lado dcho el nodo que "subí"
+            }
+            else                         /// SI ES HOJA (no tiene izq ni der)
+            {
+                free(arbol);// puede ser q la hoja a borrar fuera el nodo q buscaba originariamente, o q fuera el nodo que "subi" y ahora necesito borrarlo para q no quede duplicado
+                arbol = NULL; //como estamos en funcion recursiva, el otro llamado espera 1 nodo y si solo hago el free habra error
+            }
+        }
+    }
+    return arbol;
+}
+
+
 
 jugador cargar_jugador()
 {
@@ -155,6 +246,7 @@ jugador cargar_jugador()
 
     return aux;
 }
+
 
 jugador validarEdadJugador(jugador j)
 {
@@ -212,7 +304,16 @@ void mostrar_jugador(jugador a)
 
     printf("Pierna habil: %s\n",a.piernaHabil);
 
-    printf("Posicion: %s\n\n",a.posicion);
+    printf("Posicion: %s\n",a.posicion);
+
+    if(a.estadoJugador==1)
+    {
+        printf("Estado: Activo\n\n");
+    }
+    else
+    {
+        printf("Estado: De baja\n\n");
+    }
 }
 
 

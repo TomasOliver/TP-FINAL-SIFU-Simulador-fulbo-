@@ -67,6 +67,21 @@ int buscar_jugador_lista(nodoJugador* lista,char nombre[])
     return flag;
 }
 
+nodoJugador* buscar_nodo_jugador_lista(nodoJugador* lista,char nombre[])
+{
+    nodoJugador* nodoBuscado=NULL;
+
+    while(lista!=NULL && nodoBuscado==NULL)
+    {
+        if(strcmpi(lista->dato.nombreJugador,nombre)==0) ///SI EN ALGUN MOMENTO SE ROMPE SACAR EL I DEL STRCMP
+        {
+            nodoBuscado=lista;
+        }
+        lista=lista->siguiente;
+    }
+    return nodoBuscado;
+}
+
 nodoJugador* insertar_nodo_ordenado(nodoJugador* lista, nodoJugador* nuevo_nodo)
 {
     if(lista==NULL)

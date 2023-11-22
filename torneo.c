@@ -1,5 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
 #include "torneo.h"
-
+/*
 nodoTorneo * inicListaTorneo()
 {
     return NULL;
@@ -7,8 +10,8 @@ nodoTorneo * inicListaTorneo()
 
 nodoTorneo * crearNodoTorneo(equipo dato)
 {
-    nodoTorneo * aux = (nodoTorneo*)malloc(sizeof(nodoTorneo));
-    aux->dato= dato;
+    nodoTorneo * aux = (nodoTorneo*) malloc(sizeof(nodoTorneo));
+    aux->datoEquipo= dato;
     aux->siguiente = NULL;
     return aux;
 }
@@ -117,8 +120,8 @@ void mostrarTabla(nodoTorneo* lista)
 {
     while(lista != NULL)
     {
-        mostrar_equipo(lista.datoEquipo);
+        mostrar_equipo(lista->datoEquipo);
         lista= lista->siguiente;
     }
 }
-
+*/

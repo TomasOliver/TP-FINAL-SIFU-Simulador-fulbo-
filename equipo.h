@@ -14,6 +14,7 @@ typedef struct
     int partidosGanados;
     int partidosEmpatados;
     int partidosPerdidos;
+    int estadoEquipo; //1 activo - 0 de baja
 }equipo;
 
 
