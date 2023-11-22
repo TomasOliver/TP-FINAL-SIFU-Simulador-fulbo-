@@ -6,5 +6,6 @@ void gotoxy(int X,int Y);
 int whereX();
 int whereY();
 void hidecursor(int ver);
+void limitarCompilador();
 
 #endif // GOTOXY_H_INCLUDED

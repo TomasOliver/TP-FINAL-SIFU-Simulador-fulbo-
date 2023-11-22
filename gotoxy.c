@@ -34,3 +34,12 @@ void hidecursor(int ver){                                                       
    info.bVisible = ver;
    SetConsoleCursorInfo(consoleHandle, &info);
 }
+
+void limitarCompilador()
+{
+    HANDLE wHnd;
+
+    wHnd = GetStdHandle(STD_OUTPUT_HANDLE);
+    SMALL_RECT windowSize = {0, 0, 99, 25};      ///EEl tercer valor es el ancho y el cuarto la altura.
+    SetConsoleWindowInfo(wHnd, 1, &windowSize);
+}

@@ -36,7 +36,6 @@ typedef struct
 
 ///Prototipado
 
-void menuInicial();
 void cargarArchivo();
 registroArchivo cargarRegistro();
 jugador pasarJugador(registroArchivo aux);
@@ -49,10 +48,15 @@ void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
 nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
 
+void menuInicial();
+void menuPrincipal();
 void subMenuJugar(nodoEquipo* listaEquipos);
 void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
+
+//auxiliares
+void cuadroPantalla();
 
 ///MAIN
 int main()
@@ -83,22 +87,23 @@ int main()
 
     system("title=S.I.F.U (Simulador de Fulbo)");
 
-
+    limitarCompilador();
 
 
 ///MENU
+
     menuInicial();
+    cuadroPantalla();
+    gotoxy(30,24);
+    color(7);
+    system("pause");
 
     do
     {
         system("cls");
 
-        printf("MENU\n\n");
-        printf("1- Jugar\n");
-        printf("2- Ver equipos\n");//Dentro ver jugadores
-        printf("3- Buscar jugador\n");
-        printf("0- Salir del programa\n");
-
+        menuPrincipal();
+        cuadroPantalla();
         fflush(stdin);
         scanf("%i", &opcion);
 
@@ -192,34 +197,31 @@ void menuInicial()
     system("cls");
     system("COLOR 0");
 
-    gotoxy(40,5);
+    gotoxy(30,3);
     color(176);
     printf("     _____   _____   _____   _    _     \n");
-    gotoxy(40,6);
+    gotoxy(30,4);
     color(176);
     printf("    / ____| |_   _| |  ___| | |  | |    \n");
-    gotoxy(40,7);
+    gotoxy(30,5);
     color(176);
     printf("   | (___     | |   | |_    | |  | |    \n");
-    gotoxy(40,8);
+    gotoxy(30,6);
     color(176);
     printf("    \\___ \\    | |   |  _|   | |  | |    \n");
-    gotoxy(40,9);
+    gotoxy(30,7);
     color(176);
     printf("    ____) |  _| |_  | |     | |__| |    \n");
-    gotoxy(40,10);
+    gotoxy(30,8);
     color(176);
     printf("   |_____/  |_____| |_|      \\____/     \n");
-    gotoxy(40,11);
+    gotoxy(30,9);
     color(176);
     printf("                                        \n");
     color(7);
     printf("\n\n");
-    gotoxy(49,13);
+    gotoxy(39,11);
     printf("\x4 SIMULADOR DE FULBO \x4");
-    color(7);
-    gotoxy(40,15);
-    system("pause");
 }
 
 void cargarArchivo()
@@ -578,10 +580,10 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
     simularPartido(equipoA->dato, equipoB->dato, &partidoX, 2);
     resumenPartido(equipoA->dato, equipoB->dato, partidoX);
 
-    contarPuntosYGoles(&equipoA->dato, &equipoB->dato, partidoX);
+    //contarPuntosYGoles(&equipoA->dato, &equipoB->dato, partidoX);
 
-    printf("\nPuntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
-    printf("\nPuntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
+    //printf("\nPuntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
+    //printf("\nPuntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
 
     printf("\n\n");
 
@@ -621,3 +623,68 @@ nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos, nodoTorneo * tabla)
     return tabla;
 }
 */
+
+void cuadroPantalla()
+{
+    // ESQUINAS //
+    gotoxy(0,0);
+    printf("*");
+    gotoxy(0,25);
+    printf("*");
+    gotoxy(99,0);
+    printf("*");
+    gotoxy(99,25);
+    printf("*");
+
+    // A a B //
+    for(int i=1; i<99; i++)
+    {
+        gotoxy(i,0);
+        printf("-");
+    }
+
+    // B a D //
+    for(int l=1; l<25; l++)
+    {
+        gotoxy(99,l);
+        printf("|");
+    }
+    // C a D //
+    for(int j=1; j<99; j++)
+    {
+        gotoxy(j,25);
+        printf("-");
+    }
+    for(int j=1; j<99; j++)
+    {
+        gotoxy(j,22);
+        printf("-");
+    }
+    // A a C //
+
+    for(int k=1; k<25; k++)
+    {
+        gotoxy(0,k);
+        printf("|");
+    }
+}
+
+void menuPrincipal()
+{
+    for(int i=1; i<99; i++)
+    {
+        gotoxy(i,3);
+        printf("-");
+    }
+
+    gotoxy(40,2);
+    printf("MENU PRINCIPAL\n\n");
+    gotoxy(5,5);
+    printf("1- Jugar\n");
+    gotoxy(5,6);
+    printf("2- Ver equipos\n");//Dentro ver jugadores
+    gotoxy(5,7);
+    printf("3- Buscar jugador\n");
+    gotoxy(5,8);
+    printf("0- Salir del programa\n");
+}

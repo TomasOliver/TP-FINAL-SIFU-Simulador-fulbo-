@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "partido.h"
 #include "equipo.h"
+#include "gotoxy.h"
 
 void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
 {
@@ -54,7 +55,8 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
             }
         }
 
-        printf("\r%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
+        gotoxy(40,2);
+        printf("%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
 
         fflush(stdout);
 
@@ -64,8 +66,8 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
         }
     }
 
-    printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, x->golesEquipoA, x->golesEquipoB, equipoB.nombreEquipo);
-    printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, x->tarjetasEquipoA, x->tarjetasEquipoB, equipoB.nombreEquipo);
+    //printf("\n\nResultado final: %s %d - %d %s\n",equipoA.nombreEquipo, x->golesEquipoA, x->golesEquipoB, equipoB.nombreEquipo);
+    //printf("Tarjetas: %s %d - %d %s\n",equipoA.nombreEquipo, x->tarjetasEquipoA, x->tarjetasEquipoB, equipoB.nombreEquipo);
 }
 
 void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
@@ -159,3 +161,4 @@ int simularTarjeta()
         return 0;  // Sin tarjeta
     }
 }
+
