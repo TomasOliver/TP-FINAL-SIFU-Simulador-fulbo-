@@ -10,6 +10,10 @@ typedef struct
     int calidadEquipo;
     int puntosEquipo;
     int golesEquipo;
+    int partidosJugados;
+    int partidosGanados;
+    int partidosEmpatados;
+    int partidosPerdidos;
 }equipo;
 
 

@@ -7,8 +7,8 @@ typedef struct nodoJugador
 {
     jugador dato;
     struct nodoJugador* siguiente;
-}nodoJugador;
 
+}nodoJugador;
 ///Prototipado
 nodoJugador* iniclista_jugador();
 nodoJugador* cargar_nodos_al_principio_jugador(nodoJugador* lista);

@@ -6,6 +6,7 @@
 #include "listaPPL.h"
 #include "partido.h"
 #include "gotoxy.h"
+#include "torneo.h"
 
 const char nombreArchivo[]= {"archivo.bin"};
 const char usuAdmin[20] = "admin";
@@ -39,7 +40,7 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
-//void gotoxy(int x,int y);
+nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
 
 void subMenuJugar(nodoEquipo* listaEquipos);
 void subMenuVerEquipos(nodoEquipo* listaEquipos);
@@ -551,6 +552,33 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 }
 
 
+void subMenuJugarTorneo(nodoEquipo * listaEquipos)
+{
+    nodoTorneo * tabla = inicListaTorneo();
+    tabla = pasarListaPPLATabla(listaEquipos,tabla)
 
+    printf("\nTorneo SIFU:");
+    mostrarTabla(tabla);
+    /*
+    char continuarFecha = 's';
+    int contarFecha = 0;
+    while(continuarFecha = 's')
+    {
+        simularPartido(arr)
+    }
+    */
 
+}
 
+nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos, nodoTorneo * tabla)
+{
+    nodoTorneo * auxTabla;
+
+    while(listaEquipos!=NULL)
+    {
+        auxTabla =crearNodoTorneo(listaEquipos->dato);
+        tabla = agregarEnOrdenNombre(tabla,auxTabla);
+        listaEquipos= listaEquipos->siguiente;
+    }
+    return tabla;
+}

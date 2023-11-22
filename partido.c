@@ -73,15 +73,21 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
     if(x.golesEquipoA > x.golesEquipoB)
     {
         equipoA->puntosEquipo += 3;
+        equipoA->partidosGanados + 1;
+        equipoB->partidosPerdidos + 1;
     }
     else if(x.golesEquipoA < x.golesEquipoB)
     {
         equipoB->puntosEquipo += 3;
+        equipoB->partidosGanados + 1;
+        equipoA->partidosPerdidos + 1;
     }
     else
     {
         equipoA->puntosEquipo += 1;
         equipoB->puntosEquipo += 1;
+        equipoA->partidosEmpatados + 1;
+        equipoB->partidosEmpatados + 1;
 
     }
 

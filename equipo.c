@@ -3,11 +3,13 @@
 
 void mostrar_equipo(equipo e)
 {
-    printf("Nombre del Equipo: %s\n",e.nombreEquipo);
-
-    printf("Nacionalidad: %s\n",e.nacionalidadEquipo);
-
-    printf("Calidad: %i\n,",e.calidadEquipo);
+    printf("%s",e.nombreEquipo);
+    printf("%i",e.partidosJugados);
+    printf("%i",e.partidosGanados);
+    printf("%i",e.partidosEmpatados);
+    printf("%i",e.partidosPerdidos);
+    printf("%i",e.golesEquipo);
+    printf("%i",e.puntosEquipo);
 }
 
 

@@ -58,6 +58,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="subLista.h" />
+		<Unit filename="torneo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="torneo.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
