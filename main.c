@@ -53,7 +53,12 @@ int sistemaLogin(char usu[],char contra[]);
 nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
 void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas);
 int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
+void pasarTorneoToArchivoTorneo(fecha torneo[],int validos);
 void mostrarNombresEquipos(nodoEquipo* LDL);
+void pasarListaPplToArchivo(nodoEquipo* listaPpl);
+registroArchivo pasarEquipoToRegistro(equipo e);
+registroArchivo pasarJugadorToRegistro(jugador j);
+
 
 void menuInicial();
 void menuPrincipal();
@@ -143,7 +148,8 @@ int main()
             ///Validar opcion
             if(guardado==1)
             {
-                ///Guardar datos
+                pasarTorneoToArchivoTorneo(torneo,validosTorneo);
+                pasarListaPplToArchivo(listaEquipos);
             }
 
             printf("\nSaliendo del programa...\n");
@@ -847,6 +853,69 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJuga
     guardarFechasJugadasEnTorneo(torneo,validos,i);
 }
 
+void pasarTorneoToArchivoTorneo(fecha torneo[],int validos)
+{
+    FILE* archi=fopen(nombreArchivoTorneo,"wb");
+    if(archi!=NULL)
+    {
+        fwrite(torneo,sizeof(fecha),validos,archi);
+        fclose(archi);
+    }
+}
+
+void pasarListaPplToArchivo(nodoEquipo* listaPpl)
+{
+    FILE* archi=fopen(nombreArchivo,"wb");
+    registroArchivo aux;
+
+    if(archi!=NULL)
+    {
+        while(listaPpl!=NULL)
+        {
+            aux=pasarEquipoToRegistro(listaPpl->dato);
+            while(listaPpl->listaDeJugadores!=NULL)
+            {
+                aux=pasarJugadorToRegistro(listaPpl->listaDeJugadores->dato);
+                listaPpl->listaDeJugadores=listaPpl->listaDeJugadores->siguiente;
+                fwrite(&aux,sizeof(registroArchivo),1,archi);
+            }
+            listaPpl=listaPpl->siguiente;
+        }
+        fclose(archi);
+    }
+}
+
+registroArchivo pasarJugadorToRegistro(jugador j)
+{
+    registroArchivo aux;
+
+    aux.calidadJugador=j.calidadJugador;
+    aux.edad=j.edad;
+    strcpy(aux.nacionalidadJugador,j.nacionalidadJugador);
+    strcpy(aux.nombreJugador,j.nombreJugador);
+    strcpy(aux.piernaHabil,j.piernaHabil);
+    strcpy(aux.posicion,j.posicion);
+    aux.estadoJugador=j.estadoJugador;
+
+    return aux;
+}
+
+registroArchivo pasarEquipoToRegistro(equipo e)
+{
+    registroArchivo aux;
+
+    aux.calidadEquipo=e.calidadEquipo;
+    strcpy(aux.nombreEquipo,e.nombreEquipo);
+    aux.puntosEquipo=e.puntosEquipo;
+    aux.golesEquipo=e.golesEquipo;
+    aux.estadoEquipo=e.estadoEquipo;
+    aux.partidosEmpatados=e.partidosEmpatados;
+    aux.partidosGanados=e.partidosGanados;
+    aux.partidosPerdidos=e.partidosPerdidos;
+    aux.partidosJugados=e.partidosJugados;
+
+    return aux;
+}
 
 
 
