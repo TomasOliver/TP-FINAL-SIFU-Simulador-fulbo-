@@ -104,13 +104,17 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
     {
         equipoA->puntosEquipo += 1;
         equipoB->puntosEquipo += 1;
-        equipoA->partidosEmpatados += 1;
-        equipoB->partidosEmpatados += 1;
+
+        equipoA->partidosEmpatados += 1;  //Lo agregue pero hay q checkear
+        equipoB->partidosEmpatados += 1;  //Lo agregue pero hay q checkear
 
     }
 
     equipoA->golesEquipo += x.golesEquipoA;
     equipoB->golesEquipo += x.golesEquipoB;
+
+    equipoA->partidosJugados += 1;
+    equipoB->partidosJugados += 1;
 }
 
 void resumenPartido(equipo equipoA, equipo equipoB, partido x)

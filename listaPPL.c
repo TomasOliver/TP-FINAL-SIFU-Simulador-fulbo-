@@ -33,7 +33,7 @@ nodoEquipo* buscar_equipo(nodoEquipo* listaPpl,char nombreEquipo[])
 
     while(seg !=NULL && nodoBuscado == NULL)
     {
-        if(strcmp(seg->dato.nombreEquipo, nombreEquipo) == 0)
+        if(strcmpi(seg->dato.nombreEquipo, nombreEquipo) == 0)
         {
             nodoBuscado = seg;
         }

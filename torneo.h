@@ -31,5 +31,8 @@ void mostrarTabla(nodoTorneo* lista);
 void cargarTorneo(fecha torneo[], int dimension);
 cruce cargarCruce(char nombreEquipoA[],char nombreEquipoB[]);
 fecha cargarFecha(cruce partido1,cruce partido2,cruce partido3);
+void mostrarTorneo(fecha torneo[],int validos);
+void mostrarCruce(cruce partido1);
+void mostrarFecha(fecha aux);
 
 #endif // TORNEO_H_INCLUDED

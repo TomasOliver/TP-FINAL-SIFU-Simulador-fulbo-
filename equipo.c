@@ -5,13 +5,13 @@
 
 void mostrar_equipo(equipo e)
 {
-    printf("%s",e.nombreEquipo);
-    printf("%i",e.partidosJugados);
-    printf("%i",e.partidosGanados);
-    printf("%i",e.partidosEmpatados);
-    printf("%i",e.partidosPerdidos);
-    printf("%i",e.golesEquipo);
-    printf("%i",e.puntosEquipo);
+    printf("\n%s\n",e.nombreEquipo);
+    printf("Partidos Jugados: %i\n",e.partidosJugados);
+    printf("Partidos Ganados: %i\n",e.partidosGanados);
+    printf("Partidos Empatados: %i\n",e.partidosEmpatados);
+    printf("Partidos Perdidos: %i\n",e.partidosPerdidos);
+    printf("Goles a favor: %i\n",e.golesEquipo);
+    printf("Puntos: %i\n\n",e.puntosEquipo);
 }
 
 

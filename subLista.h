@@ -21,5 +21,6 @@ int buscar_jugador_lista(nodoJugador* lista,char nombre[]); ///Verifica si exist
 nodoJugador* buscar_nodo_jugador_lista(nodoJugador* lista,char nombre[]); ///Retorna puntero al nodo
 nodoJugador* invertir_elementos_lista(nodoJugador* lista);
 void mostrar_lista_jugadores(nodoJugador* lista);
+void buscarYmostrarJugador(nodoJugador* lista,char nombre[]);
 
 #endif // SUB_LISTA_H_INCLUDED

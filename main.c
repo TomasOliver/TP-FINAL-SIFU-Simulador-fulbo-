@@ -52,6 +52,7 @@ int sistemaLogin(char usu[],char contra[]);
 nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
 void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl);
 int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
+void mostrarNombresEquipos(nodoEquipo* LDL);
 
 void menuInicial();
 void menuPrincipal();
@@ -79,6 +80,8 @@ int main()
 
     int validosTorneo=pasarArchivoTorneoToTorneo(torneo,10);
 
+    //mostrarTorneo(torneo,validosTorneo);
+
     simularFecha(torneo,validosTorneo,listaEquipos);
 
     //mostrarLDL(listaEquipos);
@@ -89,7 +92,7 @@ int main()
 
     //inorder(arbolJugadores);
 
-
+    /*
     int opcion,guardado;
 
     system("title=S.I.F.U (Simulador de Fulbo)");
@@ -102,6 +105,7 @@ int main()
     cuadroPantalla();
     gotoxy(30,24);
     color(7);
+
     system("pause");
 
     do
@@ -143,7 +147,7 @@ int main()
     }
     while(opcion!=0);
 
-
+    */
     return 0;
 }
 
@@ -207,7 +211,7 @@ void cargarArchivo()
 
 void cargarArchivoTorneo()
 {
-    FILE* archi = fopen(nombreArchivoTorneo,"ab");
+    FILE* archi = fopen(nombreArchivoTorneo,"wb");
     fecha torneo[10];
     if(archi)
     {
@@ -717,37 +721,67 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl)
 
     while (continuar=='s' && i<validos)
     {
-        printf("Fecha %i: \n",i+1);
-        printf("\nTest 1\n");
+        printf("Fecha %i: \n\n",i+1);
 
         partido1=torneo[i].partido1;
         partido2=torneo[i].partido2;
         partido3=torneo[i].partido3;
 
-        printf("%s vs %s\n",partido1.equipoA,partido1.equipoB);
-        printf("%s vs %s\n",partido2.equipoA,partido2.equipoB);
-        printf("%s vs %s\n",partido3.equipoA,partido3.equipoB);
+        printf("%s vs %s\n\n",partido1.equipoA,partido1.equipoB);
+        printf("%s vs %s\n\n",partido2.equipoA,partido2.equipoB);
+        printf("%s vs %s\n\n",partido3.equipoA,partido3.equipoB);
 
+        system("pause");
+        system("cls");
+
+        //Partido1
         nodoEquipo* nodoEquipoA=buscar_equipo(listaPpl,partido1.equipoA);
         nodoEquipo* nodoEquipoB=buscar_equipo(listaPpl,partido1.equipoB);
 
-
-        simularPartido(nodoEquipoA->dato,nodoEquipoB->dato,&aux1,2);
-        printf("\nTest 5\n");
+        simularPartido(nodoEquipoA->dato,nodoEquipoB->dato,&aux1,1);
         contarPuntosYGoles(&nodoEquipoA->dato,&nodoEquipoB->dato,aux1);
 
 
-        mostrar_equipo(nodoEquipoA->dato);
-        mostrar_equipo(nodoEquipoB->dato);
+        mostrar_equipo(nodoEquipoA->dato); //Desp reemplazar esto por la tabla abajo
+        mostrar_equipo(nodoEquipoB->dato); //Desp reemplazar esto por la tabla abajo
+        system("pause");
+        system("cls");
+
+        //Partido2
+        nodoEquipo* nodoEquipoC=buscar_equipo(listaPpl,partido2.equipoA);
+        nodoEquipo* nodoEquipoD=buscar_equipo(listaPpl,partido2.equipoB);
+
+        simularPartido(nodoEquipoC->dato,nodoEquipoD->dato,&aux2,1);
+        contarPuntosYGoles(&nodoEquipoC->dato,&nodoEquipoD->dato,aux2);
+
+        mostrar_equipo(nodoEquipoC->dato);  //Desp reemplazar esto por la tabla abajo
+        mostrar_equipo(nodoEquipoD->dato);  //Desp reemplazar esto por la tabla abajo
+        system("pause");
+        system("cls");
+
+        //Partido3
+        nodoEquipo* nodoEquipoE=buscar_equipo(listaPpl,partido3.equipoA);
+        nodoEquipo* nodoEquipoF=buscar_equipo(listaPpl,partido3.equipoB);
+
+
+        simularPartido(nodoEquipoE->dato,nodoEquipoF->dato,&aux3,1);
+        contarPuntosYGoles(&nodoEquipoE->dato,&nodoEquipoF->dato,aux3);
+
+        mostrar_equipo(nodoEquipoE->dato);  //Desp reemplazar esto por la tabla abajo
+        mostrar_equipo(nodoEquipoF->dato);  //Desp reemplazar esto por la tabla abajo
+
+        system("pause");
+        system("cls");
 
 
         ///ACA VA LA TABLA
 
         i++;
 
-        printf("Desea simular otra fecha? (s/n)\n");
+        printf("\n\nDesea simular otra fecha? (s/n)\n");
         fflush(stdin);
         scanf("%c",&continuar);
+        system("cls");
     }
 }
 

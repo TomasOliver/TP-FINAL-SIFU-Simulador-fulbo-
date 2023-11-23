@@ -48,7 +48,7 @@ void cargarTorneo(fecha torneo[], int dimension)
         fflush(stdin);
         gets(equipoF);
 
-        partido1=cargarCruce(equipoE,equipoF);
+        partido3=cargarCruce(equipoE,equipoF);
 
         torneo[i].partido1=partido1;
         torneo[i].partido2=partido2;
@@ -191,13 +191,29 @@ nodoTorneo * agregarEnOrdenPuntos(nodoTorneo * lista, nodoTorneo * nuevoNodoTorn
     return lista;
 }
 
-void mostrarCrucesTorneo(fecha Torneo[],int validos)
+void mostrarTorneo(fecha torneo[],int validos)
 {
     int i=0;
     while(i<validos)
     {
-        printf("")
+        mostrarFecha(torneo[i]);
+        i++;
     }
+}
+
+void mostrarCruce(cruce partido1)
+{
+    printf("\n%s vs %s\n",partido1.equipoA,partido1.equipoB);
+}
+
+void mostrarFecha(fecha aux)
+{
+    printf("Partido 1:");
+    mostrarCruce(aux.partido1);
+    printf("Partido 2:");
+    mostrarCruce(aux.partido2);
+    printf("Partido 3:");
+    mostrarCruce(aux.partido3);
 }
 
 
