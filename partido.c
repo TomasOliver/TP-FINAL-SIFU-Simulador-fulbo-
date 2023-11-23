@@ -55,7 +55,7 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
             }
         }
 
-        gotoxy(40,2);
+        gotoxy(33,2);
         printf("%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
 
         fflush(stdout);
@@ -105,28 +105,37 @@ void resumenPartido(equipo equipoA, equipo equipoB, partido x)
     int contTB=0;
 
     int i=0;
+    int g=0;
 
     while(i<=90)
     {
         if(x.golesXMinutoEquipoA[contGA]==i)
         {
-            printf("\nGol de %s en el minuto %i",equipoA.nombreEquipo,x.golesXMinutoEquipoA[contGA]);
+            gotoxy(6,5+g);
+            printf("Gol de %s en el minuto %i",equipoA.nombreEquipo,x.golesXMinutoEquipoA[contGA]);
             contGA++;
+            g++;
         }
         if(x.tarjetasXMinutoEquipoA[contTA]==i)
         {
-            printf("\nTarjeta de %s en el minuto %i",equipoA.nombreEquipo,x.tarjetasXMinutoEquipoA[contTA]);
+            gotoxy(6,5+g);
+            printf("Tarjeta de %s en el minuto %i",equipoA.nombreEquipo,x.tarjetasXMinutoEquipoA[contTA]);
             contTA++;
+            g++;
         }
         if(x.golesXMinutoEquipoB[contGB]==i)
         {
-            printf("\nGol de %s en el minuto %i",equipoB.nombreEquipo,x.golesXMinutoEquipoB[contGB]);
+            gotoxy(58,5+g);
+            printf("Gol de %s en el minuto %i",equipoB.nombreEquipo,x.golesXMinutoEquipoB[contGB]);
             contGB++;
+            g++;
         }
         if(x.tarjetasXMinutoEquipoB[contTB]==i)
         {
-            printf("\nTarjeta de %s en el minuto %i",equipoB.nombreEquipo,x.tarjetasXMinutoEquipoB[contTB]);
+            gotoxy(58,5+g);
+            printf("Tarjeta de %s en el minuto %i",equipoB.nombreEquipo,x.tarjetasXMinutoEquipoB[contTB]);
             contTB++;
+            g++;
         }
         i++;
     }

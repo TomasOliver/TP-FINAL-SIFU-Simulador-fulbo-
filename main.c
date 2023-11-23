@@ -449,9 +449,22 @@ void subMenuJugar(nodoEquipo* listaEquipos)
 
     do
     {
+        for(int i=1; i<99; i++)
+        {
+            gotoxy(i,3);
+            printf("-");
+        }
+
+        cuadroPantalla();
+        gotoxy(42,2);
+        printf("MENU JUGAR");
+        gotoxy(5,5);
         printf("1- Simular Liga\n");
+        gotoxy(5,6);
         printf("2- Simular Partido\n");
+        gotoxy(5,7);
         printf("0- Volver al menu anterior\n");
+        gotoxy(2,24);
         scanf("%i", &opcionPartido);
 
         switch(opcionPartido)
