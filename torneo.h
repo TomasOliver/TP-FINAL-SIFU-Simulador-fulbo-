@@ -19,6 +19,7 @@ typedef struct
     cruce partido1;
     cruce partido2;
     cruce partido3;
+    int fechasJugadas;
 } fecha;
 
 ///Prototipados
@@ -34,5 +35,6 @@ fecha cargarFecha(cruce partido1,cruce partido2,cruce partido3);
 void mostrarTorneo(fecha torneo[],int validos);
 void mostrarCruce(cruce partido1);
 void mostrarFecha(fecha aux);
+void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas);
 
 #endif // TORNEO_H_INCLUDED

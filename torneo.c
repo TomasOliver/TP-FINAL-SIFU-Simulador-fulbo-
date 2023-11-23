@@ -3,6 +3,16 @@
 #include "string.h"
 #include "torneo.h"
 
+void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas)
+{
+    int i=0;
+    while(i<validos)
+    {
+        torneo[i].fechasJugadas=fechasJugadas;
+        i++;
+    }
+}
+
 void cargarTorneo(fecha torneo[], int dimension)
 {
     char equipoA[30];
@@ -53,6 +63,7 @@ void cargarTorneo(fecha torneo[], int dimension)
         torneo[i].partido1=partido1;
         torneo[i].partido2=partido2;
         torneo[i].partido3=partido3;
+        torneo[i].fechasJugadas=0;
 
         i++;
     }
@@ -196,6 +207,7 @@ void mostrarTorneo(fecha torneo[],int validos)
     int i=0;
     while(i<validos)
     {
+        printf("\nFecha %i: \n",i+1);
         mostrarFecha(torneo[i]);
         i++;
     }
@@ -203,12 +215,12 @@ void mostrarTorneo(fecha torneo[],int validos)
 
 void mostrarCruce(cruce partido1)
 {
-    printf("\n%s vs %s\n",partido1.equipoA,partido1.equipoB);
+    printf("\n%s vs %s\n\n",partido1.equipoA,partido1.equipoB);
 }
 
 void mostrarFecha(fecha aux)
 {
-    printf("Partido 1:");
+    printf("\nPartido 1:");
     mostrarCruce(aux.partido1);
     printf("Partido 2:");
     mostrarCruce(aux.partido2);

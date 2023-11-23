@@ -105,8 +105,8 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
         equipoA->puntosEquipo += 1;
         equipoB->puntosEquipo += 1;
 
-        equipoA->partidosEmpatados += 1;  //Lo agregue pero hay q checkear
-        equipoB->partidosEmpatados += 1;  //Lo agregue pero hay q checkear
+        equipoA->partidosEmpatados += 1;
+        equipoB->partidosEmpatados += 1;
 
     }
 

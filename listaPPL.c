@@ -100,7 +100,7 @@ int existeEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
 
     while(seg !=NULL && flag == 0)
     {
-        if(strcmp(seg->dato.nombreEquipo, nombreEquipo) == 0)
+        if(strcmpi(seg->dato.nombreEquipo, nombreEquipo) == 0)
         {
             flag=1;
         }

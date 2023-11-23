@@ -8,8 +8,9 @@
 #include "gotoxy.h"
 #include "torneo.h"
 
-const char nombreArchivo[]= {"archivo.bin"};
-const char nombreArchivoTorneo[]= {"archivoTorneo.bin"};
+///Constantes
+const char nombreArchivo[]= {"archivo.bin"}; ///datos de equipos y jugadores
+const char nombreArchivoTorneo[]= {"archivoTorneo.bin"}; ///Datos del torneo
 const char usuAdmin[20] = "admin";
 const char contraAdmin[20] = "admin";
 
@@ -50,20 +51,21 @@ int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
 nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
-void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl);
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas);
 int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 
 void menuInicial();
 void menuPrincipal();
-void subMenuJugar(nodoEquipo* listaEquipos);
 void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
 void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
 void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
+void subMenuJugar(nodoEquipo* listaEquipos,fecha torneo[],int validosTorneo);
+void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorneo);
 
-//auxiliares
+///auxiliares
 void cuadroPantalla();
 
 ///MAIN
@@ -80,9 +82,9 @@ int main()
 
     int validosTorneo=pasarArchivoTorneoToTorneo(torneo,10);
 
-    //mostrarTorneo(torneo,validosTorneo);
+    mostrarTorneo(torneo,validosTorneo);
 
-    simularFecha(torneo,validosTorneo,listaEquipos);
+    //simularFecha(torneo,validosTorneo,listaEquipos,0);
 
     //mostrarLDL(listaEquipos);
 
@@ -92,7 +94,7 @@ int main()
 
     //inorder(arbolJugadores);
 
-    /*
+
     int opcion,guardado;
 
     system("title=S.I.F.U (Simulador de Fulbo)");
@@ -120,7 +122,7 @@ int main()
         switch (opcion)
         {
         case 1:
-            subMenuJugar(listaEquipos);
+            subMenuJugar(listaEquipos,torneo,validosTorneo);
             break;
         case 2:
             subMenuVerEquipos(listaEquipos);
@@ -134,8 +136,15 @@ int main()
             break;
 
         case 0:
+            system("cls");
             printf("Desea guardar los datos modificados en partida? \n1- si / 2- no \n");
+            fflush(stdin);
             scanf("%i",&guardado);
+            ///Validar opcion
+            if(guardado==1)
+            {
+                ///Guardar datos
+            }
 
             printf("\nSaliendo del programa...\n");
             break;
@@ -147,7 +156,7 @@ int main()
     }
     while(opcion!=0);
 
-    */
+
     return 0;
 }
 
@@ -486,7 +495,7 @@ void subMenuBuscarJugador(nodoarbol* arbolJugadores)
     system("cls");
 }
 
-void subMenuJugar(nodoEquipo* listaEquipos)
+void subMenuJugar(nodoEquipo* listaEquipos,fecha torneo[],int validosTorneo)
 {
     int opcionPartido;
     char continuar='s';
@@ -505,7 +514,7 @@ void subMenuJugar(nodoEquipo* listaEquipos)
         gotoxy(42,2);
         printf("MENU JUGAR");
         gotoxy(5,5);
-        printf("1- Simular Liga\n");
+        printf("1- Jugar Liga\n");
         gotoxy(5,6);
         printf("2- Simular Partido\n");
         gotoxy(5,7);
@@ -516,13 +525,13 @@ void subMenuJugar(nodoEquipo* listaEquipos)
         switch(opcionPartido)
         {
         case 1:
-
+            subSubMenuSimularTorneo(listaEquipos,torneo,validosTorneo);
             break;
         case 2:
             while(continuar=='s')
             {
                 subSubMenuSimularPartido(listaEquipos);
-                printf("\n Desea hacer otro amistoso? (s/n)\n");
+                printf("Desea hacer otro amistoso? (s/n)\n");
                 fflush(stdin);
                 scanf("%c",&continuar);
                 system("cls");
@@ -539,6 +548,47 @@ void subMenuJugar(nodoEquipo* listaEquipos)
     while(opcionPartido!=0);
 }
 
+void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorneo)
+{
+    int opcionTorneo;
+    int fechasJugadas;
+
+    do
+    {
+        system("cls");
+
+        printf("MENU TORNEO\n");
+        printf("1-Simular Torneo\n");
+        printf("2-Ver Fechas y cruces\n");
+        printf("3-Ver tabla del torneo\n");
+        printf("0-Volver al menu anterior\n");
+
+        scanf("%i", &opcionTorneo);
+        system("cls");
+
+        switch(opcionTorneo)
+        {
+        case 1:
+            fechasJugadas=torneo[0].fechasJugadas;
+
+            simularFecha(torneo,validosTorneo,listaPpl,fechasJugadas);
+            break;
+        case 2:
+            mostrarTorneo(torneo,validosTorneo);
+            system("pause");
+            break;
+        case 0:
+            system("cls");
+            break;
+        default:
+            system("cls");
+            printf("Opcion invalida. Ingrese nuevamente...\n");
+        }
+    }
+    while(opcionTorneo!=0);
+
+}
+
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 {
     char nombreEquipoA[20];
@@ -547,10 +597,11 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
     system("cls");
 
-    mostrarNombresEquipos(listaEquipos);
 
     while(flag==0)
     {
+        mostrarNombresEquipos(listaEquipos);
+
         printf("\nIngrese el nombre del primer equipo\n");
         fflush(stdin);
         gets(nombreEquipoA);
@@ -562,19 +613,34 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
         if(existeEquipo(listaEquipos,nombreEquipoA) && existeEquipo(listaEquipos,nombreEquipoB))
         {
-            flag=1;
+            if(strcmpi(nombreEquipoA,nombreEquipoB)!=0)
+            {
+                flag=1;
+            }
+            else
+            {
+                printf("Error. Un equipo no puede jugar contra si mismo. Intente nuevamente...\n");
+                system("pause");
+                system("cls");
+            }
         }
         else if(existeEquipo(listaEquipos,nombreEquipoA)!=1 && existeEquipo(listaEquipos,nombreEquipoB)!=1)
         {
             printf("Error. Los equipos ingresados no son validos. Intente nuevamente...\n");
+            system("pause");
+            system("cls");
         }
         else if(existeEquipo(listaEquipos,nombreEquipoA)!=1)
         {
             printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoA);
+            system("pause");
+            system("cls");
         }
         else
         {
             printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoB);
+            system("pause");
+            system("cls");
         }
 
     }
@@ -588,15 +654,11 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
     simularPartido(equipoA->dato, equipoB->dato, &partidoX, 2);
     resumenPartido(equipoA->dato, equipoB->dato, partidoX);
 
-    //contarPuntosYGoles(&equipoA->dato, &equipoB->dato, partidoX);
-
-    //printf("\nPuntos y goles del Equipo A: %i %i",equipoA->dato.puntosEquipo, equipoA->dato.golesEquipo);
-    //printf("\nPuntos y goles del Equipo B: %i %i",equipoB->dato.puntosEquipo, equipoB->dato.golesEquipo);
-
     printf("\n\n");
 
     gotoxy(2,26);
     system("pause");
+    system("cls");
 
 }
 
@@ -606,7 +668,6 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
     char usurio[20];
     char contrasenia[20];
     int credenciales=0;
-    int seguir = 0;
     system("cls");
     printf("Ingresaste al menu secreto: \n");
     credenciales = sistemaLogin(usurio,contrasenia);
@@ -710,10 +771,10 @@ void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
     while(opcionJugadores!=0);
 }
 
-void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl)
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas)
 {
     char continuar='s';
-    int i=0;
+    int i=fechasJugadas;
     cruce partido1;
     cruce partido2;
     cruce partido3;
@@ -773,8 +834,7 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl)
         system("pause");
         system("cls");
 
-
-        ///ACA VA LA TABLA
+        ///ACA hay que actualizar la tabla con los datos de la LDL
 
         i++;
 
@@ -783,7 +843,13 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl)
         scanf("%c",&continuar);
         system("cls");
     }
+
+    guardarFechasJugadasEnTorneo(torneo,validos,i);
 }
+
+
+
+
 
 /*
 void subMenuJugarTorneo(nodoEquipo * listaEquipos)
