@@ -55,14 +55,31 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
             }
         }
 
-        gotoxy(33,2);
-        printf("%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
-
         fflush(stdout);
 
         if(opcion == 2)
         {
+            cuadroPartido();
+
+            gotoxy(15,2);
+            printf("%s",equipoA.nombreEquipo);
+            gotoxy(41,2);
+            printf("%i",x->golesEquipoA);
+
+            gotoxy(54,2);
+            printf("%i",x->golesEquipoB);
+            gotoxy(70,2);
+            printf("%s",equipoB.nombreEquipo);
+
+            gotoxy(47,2);
+            printf("%2d'",minuto);
+
             usleep(100000);
+        }
+        else
+        {
+            gotoxy(33,2);
+            printf("%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
         }
     }
 
@@ -125,14 +142,14 @@ void resumenPartido(equipo equipoA, equipo equipoB, partido x)
         }
         if(x.golesXMinutoEquipoB[contGB]==i)
         {
-            gotoxy(58,5+g);
+            gotoxy(56,5+g);
             printf("Gol de %s en el minuto %i",equipoB.nombreEquipo,x.golesXMinutoEquipoB[contGB]);
             contGB++;
             g++;
         }
         if(x.tarjetasXMinutoEquipoB[contTB]==i)
         {
-            gotoxy(58,5+g);
+            gotoxy(56,5+g);
             printf("Tarjeta de %s en el minuto %i",equipoB.nombreEquipo,x.tarjetasXMinutoEquipoB[contTB]);
             contTB++;
             g++;
@@ -170,4 +187,56 @@ int simularTarjeta()
         return 0;  // Sin tarjeta
     }
 }
+
+
+void cuadroPartido()
+{
+    // ESQUINAS //
+    gotoxy(0,0);
+    printf("*");
+    gotoxy(0,25);
+    printf("*");
+    gotoxy(99,0);
+    printf("*");
+    gotoxy(99,25);
+    printf("*");
+
+    for(int i=1; i<99; i++)
+    {
+        gotoxy(i,0);
+        printf("-");
+    }
+
+    for(int i=1; i<99; i++)
+    {
+        gotoxy(i,3);
+        printf("-");
+    }
+
+    for(int l=1; l<25; l++)
+    {
+        gotoxy(99,l);
+        printf("|");
+    }
+
+    for(int l=1; l<25; l++)
+    {
+        gotoxy(48,l);
+        printf("|");
+    }
+
+    for(int j=1; j<99; j++)
+    {
+        gotoxy(j,25);
+        printf("-");
+    }
+
+    for(int k=1; k<25; k++)
+    {
+        gotoxy(0,k);
+        printf("|");
+    }
+
+}
+
 

@@ -24,5 +24,7 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x);
 int simularGol();
 int simularTarjeta();
 
+void cuadroPartido();
+
 
 #endif // PARTIDO_H_INCLUDED

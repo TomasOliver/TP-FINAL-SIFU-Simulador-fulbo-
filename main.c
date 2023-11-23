@@ -476,7 +476,7 @@ void subMenuJugar(nodoEquipo* listaEquipos)
             while(continuar=='s')
             {
                 subSubMenuSimularPartido(listaEquipos);
-                printf("\nDesea hacer otro amistoso? (s/n)\n");
+                printf("\n Desea hacer otro amistoso? (s/n)\n");
                 fflush(stdin);
                 scanf("%c",&continuar);
                 system("cls");
@@ -549,6 +549,7 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
     printf("\n\n");
 
+    gotoxy(2,26);
     system("pause");
 
 }
@@ -708,20 +709,20 @@ void cuadroPantalla()
     gotoxy(99,25);
     printf("*");
 
-    // A a B //
+    // Linea Superior //
     for(int i=1; i<99; i++)
     {
         gotoxy(i,0);
         printf("-");
     }
 
-    // B a D //
+    // Linea Derecha //
     for(int l=1; l<25; l++)
     {
         gotoxy(99,l);
         printf("|");
     }
-    // C a D //
+    // Linea Inferior//
     for(int j=1; j<99; j++)
     {
         gotoxy(j,25);
@@ -732,7 +733,7 @@ void cuadroPantalla()
         gotoxy(j,22);
         printf("-");
     }
-    // A a C //
+    // Linea Izquierda //
 
     for(int k=1; k<25; k++)
     {
