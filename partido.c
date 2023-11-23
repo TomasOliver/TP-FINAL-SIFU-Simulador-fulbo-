@@ -20,7 +20,6 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
     int gb=0;
     int ta=0;
     int tb=0;
-
     for (int minuto = 1; minuto <= 90; minuto++)
     {
         if (simularGol())
@@ -76,7 +75,7 @@ void simularPartido(equipo equipoA, equipo equipoB, partido* x, int opcion)
 
             usleep(100000);
         }
-        else
+        else if(opcion==1)
         {
             gotoxy(33,2);
             printf("%s %i - %2d' - %i %s",equipoA.nombreEquipo,x->golesEquipoA,minuto,x->golesEquipoB,equipoB.nombreEquipo);
@@ -92,21 +91,21 @@ void contarPuntosYGoles(equipo* equipoA, equipo* equipoB, partido x)
     if(x.golesEquipoA > x.golesEquipoB)
     {
         equipoA->puntosEquipo += 3;
-        equipoA->partidosGanados + 1;
-        equipoB->partidosPerdidos + 1;
+        equipoA->partidosGanados += 1;
+        equipoB->partidosPerdidos += 1;
     }
     else if(x.golesEquipoA < x.golesEquipoB)
     {
         equipoB->puntosEquipo += 3;
-        equipoB->partidosGanados + 1;
-        equipoA->partidosPerdidos + 1;
+        equipoB->partidosGanados += 1;
+        equipoA->partidosPerdidos += 1;
     }
     else
     {
         equipoA->puntosEquipo += 1;
         equipoB->puntosEquipo += 1;
-        equipoA->partidosEmpatados + 1;
-        equipoB->partidosEmpatados + 1;
+        equipoA->partidosEmpatados += 1;
+        equipoB->partidosEmpatados += 1;
 
     }
 

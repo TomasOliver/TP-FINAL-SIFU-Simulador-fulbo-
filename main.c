@@ -9,6 +9,7 @@
 #include "torneo.h"
 
 const char nombreArchivo[]= {"archivo.bin"};
+const char nombreArchivoTorneo[]= {"archivoTorneo.bin"};
 const char usuAdmin[20] = "admin";
 const char contraAdmin[20] = "admin";
 
@@ -37,6 +38,7 @@ typedef struct
 ///Prototipado
 
 void cargarArchivo();
+void cargarArchivoTorneo();
 registroArchivo cargarRegistro();
 jugador pasarJugador(registroArchivo aux);
 equipo pasarEquipo(registroArchivo aux);
@@ -48,6 +50,8 @@ int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
 nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl);
+int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
 
 void menuInicial();
 void menuPrincipal();
@@ -64,13 +68,18 @@ void cuadroPantalla();
 ///MAIN
 int main()
 {
-
-
     //cargarArchivo();
+    //cargarArchivoTorneo();
 
     nodoEquipo* listaEquipos=inicEquipo();
 
     listaEquipos = pasar_archivo_a_LDL(listaEquipos);
+
+    fecha torneo[10];
+
+    int validosTorneo=pasarArchivoTorneoToTorneo(torneo,10);
+
+    simularFecha(torneo,validosTorneo,listaEquipos);
 
     //mostrarLDL(listaEquipos);
 
@@ -192,8 +201,41 @@ void cargarArchivo()
     }
     else
     {
-        printf("El archivo no pudo abrirse \n");
+        printf("\nError,el archivo no pudo abrirse \n");
     }
+}
+
+void cargarArchivoTorneo()
+{
+    FILE* archi = fopen(nombreArchivoTorneo,"ab");
+    fecha torneo[10];
+    if(archi)
+    {
+        cargarTorneo(torneo,10);
+        fwrite(torneo,sizeof(fecha),10,archi);
+        fclose(archi);
+    }
+    else
+    {
+        printf("\nError, el archivo no puedo abrirse \n");
+    }
+}
+
+int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension)
+{
+    FILE* archi=fopen(nombreArchivoTorneo,"rb");
+    fecha aux;
+    int i=0;
+    if(archi!=NULL)
+    {
+        while(fread(&aux,sizeof(fecha),1,archi)>0 && i<dimension)
+        {
+            torneo[i]=aux;
+            i++;
+        }
+        fclose(archi);
+    }
+    return i;
 }
 
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl)
@@ -662,6 +704,51 @@ void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
         }
     }
     while(opcionJugadores!=0);
+}
+
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl)
+{
+    char continuar='s';
+    int i=0;
+    cruce partido1;
+    cruce partido2;
+    cruce partido3;
+    partido aux1,aux2,aux3;
+
+    while (continuar=='s' && i<validos)
+    {
+        printf("Fecha %i: \n",i+1);
+        printf("\nTest 1\n");
+
+        partido1=torneo[i].partido1;
+        partido2=torneo[i].partido2;
+        partido3=torneo[i].partido3;
+
+        printf("%s vs %s\n",partido1.equipoA,partido1.equipoB);
+        printf("%s vs %s\n",partido2.equipoA,partido2.equipoB);
+        printf("%s vs %s\n",partido3.equipoA,partido3.equipoB);
+
+        nodoEquipo* nodoEquipoA=buscar_equipo(listaPpl,partido1.equipoA);
+        nodoEquipo* nodoEquipoB=buscar_equipo(listaPpl,partido1.equipoB);
+
+
+        simularPartido(nodoEquipoA->dato,nodoEquipoB->dato,&aux1,2);
+        printf("\nTest 5\n");
+        contarPuntosYGoles(&nodoEquipoA->dato,&nodoEquipoB->dato,aux1);
+
+
+        mostrar_equipo(nodoEquipoA->dato);
+        mostrar_equipo(nodoEquipoB->dato);
+
+
+        ///ACA VA LA TABLA
+
+        i++;
+
+        printf("Desea simular otra fecha? (s/n)\n");
+        fflush(stdin);
+        scanf("%c",&continuar);
+    }
 }
 
 /*

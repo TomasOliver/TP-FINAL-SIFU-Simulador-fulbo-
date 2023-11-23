@@ -16,6 +16,9 @@ typedef struct
     int estadoEquipo; //1 activo - 0 de baja
 }equipo;
 
+///Prototipado
+void mostrar_equipo(equipo e);
+
 
 
 #endif // EQUIPO_H_INCLUDED

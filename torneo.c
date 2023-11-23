@@ -3,7 +3,82 @@
 #include "string.h"
 #include "torneo.h"
 
-/*
+void cargarTorneo(fecha torneo[], int dimension)
+{
+    char equipoA[30];
+    char equipoB[30];
+    char equipoC[30];
+    char equipoD[30];
+    char equipoE[30];
+    char equipoF[30];
+    cruce partido1;
+    cruce partido2;
+    cruce partido3;
+
+    int i=0;
+    while(i<dimension)
+    {
+        printf("\nCARGAR FECHA %i\n",(i+1));
+
+        printf("Ingrese nombre del equipo 1: \n");
+        fflush(stdin);
+        gets(equipoA);
+
+        printf("Ingrese nombre del equipo 2: \n");
+        fflush(stdin);
+        gets(equipoB);
+
+        partido1=cargarCruce(equipoA,equipoB);
+
+        printf("Ingrese nombre del equipo 3: \n");
+        fflush(stdin);
+        gets(equipoC);
+
+        printf("Ingrese nombre del equipo 4: \n");
+        fflush(stdin);
+        gets(equipoD);
+
+        partido2=cargarCruce(equipoC,equipoD);
+
+        printf("Ingrese nombre del equipo 5: \n");
+        fflush(stdin);
+        gets(equipoE);
+
+        printf("Ingrese nombre del equipo 6: \n");
+        fflush(stdin);
+        gets(equipoF);
+
+        partido1=cargarCruce(equipoE,equipoF);
+
+        torneo[i].partido1=partido1;
+        torneo[i].partido2=partido2;
+        torneo[i].partido3=partido3;
+
+        i++;
+    }
+}
+
+cruce cargarCruce(char nombreEquipoA[],char nombreEquipoB[])
+{
+    cruce aux;
+
+    strcpy(aux.equipoA,nombreEquipoA);
+    strcpy(aux.equipoB,nombreEquipoB);
+
+    return aux;
+}
+
+fecha cargarFecha(cruce partido1,cruce partido2,cruce partido3)
+{
+    fecha aux;
+
+    aux.partido1=partido1;
+    aux.partido2=partido2;
+    aux.partido3=partido3;
+
+    return aux;
+}
+
 nodoTorneo * inicListaTorneo()
 {
     return NULL;
@@ -116,6 +191,15 @@ nodoTorneo * agregarEnOrdenPuntos(nodoTorneo * lista, nodoTorneo * nuevoNodoTorn
     return lista;
 }
 
+void mostrarCrucesTorneo(fecha Torneo[],int validos)
+{
+    int i=0;
+    while(i<validos)
+    {
+        printf("")
+    }
+}
+
 
 void mostrarTabla(nodoTorneo* lista)
 {
@@ -125,4 +209,3 @@ void mostrarTabla(nodoTorneo* lista)
         lista= lista->siguiente;
     }
 }
-*/
