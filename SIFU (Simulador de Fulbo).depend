@@ -373,37 +373,38 @@
 
 1700679416 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700684343 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
+1700697537 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700684397 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
+1700697737 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
 1700671023 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.h
 	"jugador.h"
 
-1700664864 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.c
+1700692043 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<unistd.h>
 	"partido.h"
 	"equipo.h"
+	"gotoxy.h"
 
 1700423196 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\partido.h
 	"equipo.h"
 
-1700675401 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.c
+1700698031 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\sublista.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"subLista.h"
 
-1700685051 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
+1700697799 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -414,9 +415,9 @@
 	"gotoxy.h"
 	"torneo.h"
 
-1700423195 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\gotoxy.h
+1700692043 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
-1700423195 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\gotoxy.c
+1700692043 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\gotoxy.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -424,7 +425,7 @@
 1700665721 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.h
 	"equipo.h"
 
-1700665801 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.c
+1700697530 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"

@@ -82,6 +82,18 @@ nodoJugador* buscar_nodo_jugador_lista(nodoJugador* lista,char nombre[])
     return nodoBuscado;
 }
 
+void buscarYmostrarJugador(nodoJugador* lista,char nombre[])
+{
+    while(lista!=NULL)
+    {
+        if(strcmpi(lista->dato.nombreJugador,nombre)==0)
+        {
+            mostrar_jugador(lista->dato);
+        }
+        lista=lista->siguiente;
+    }
+}
+
 nodoJugador* insertar_nodo_ordenado(nodoJugador* lista, nodoJugador* nuevo_nodo)
 {
     if(lista==NULL)

@@ -173,6 +173,8 @@ void altaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[])
             nodoJugadorArbol->dato.estadoJugador=1; //Lo modifico en el arbol
 
             nodoJugadorLDL->dato.estadoJugador=1; //Lo modifico en la LDL
+
+            printf("\nEl jugador ha sido dado de alta correctamente.\n");
         }
         else
         {
@@ -199,6 +201,8 @@ void bajaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[])
             nodoJugadorArbol->dato.estadoJugador=0; //Lo modifico en el arbol
 
             nodoJugadorLDL->dato.estadoJugador=0; //Lo modifico en la LDL
+
+            printf("\nEl jugador ha sido dado de baja correctamente.\n");
         }
         else
         {
@@ -234,6 +238,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
         jugador aux2;
         int opcion;
 
+
         printf("Que dato desea modificar?\n");
         printf("1-Nombre y Apellido\n");
         printf("2-Nacionalidad\n");
@@ -247,7 +252,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
         switch(opcion)
         {
         case 1: ///No se puede utilizar, el nombre es el criterio de ordenamiento del arbol, y si lo cambiamos no se vera reflejado en el arbol cuando busquemos el jugador. Decidimos borrar el nodo y reinsertarlo
-
+            system("cls");
             printf("Ingrese el nuevo nombre y apellido del jugador: \n");
             fflush(stdin);
             gets(aux.nombreJugador);
@@ -264,6 +269,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             arbolJugadores=insertar_nodo_arbol(arbolJugadores,nuevoNodo); ///Lo modifico en el arbol
             break;
         case 2:
+            system("cls");
             printf("Ingrese nueva nacionalidad del jugador: \n");
             fflush(stdin);
             gets(aux.nacionalidadJugador);
@@ -272,6 +278,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             strcpy(JugadorBuscadoLDL->dato.nacionalidadJugador,aux.nacionalidadJugador);  ///Lo modifico en la LDL
             break;
         case 3:
+            system("cls");
             printf("Ingrese nueva calidad del jugador (entre 1 y 5): \n");
             scanf("%i",&aux.calidadJugador);
             aux=validarCalidadJugador(aux);
@@ -280,6 +287,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             JugadorBuscadoLDL->dato.calidadJugador=aux.calidadJugador; ///Lo modifico en la LDL
             break;
         case 4:
+            system("cls");
             printf("Ingrese edad del jugador (entre 18 y 40): \n");
             scanf("%i",&aux.edad);
             aux=validarEdadJugador(aux);
@@ -288,6 +296,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             JugadorBuscadoLDL->dato.edad=aux.edad; ///Lo modifico en la LDL
             break;
         case 5:
+            system("cls");
             printf("Ingrese pierna habil del jugador(Izquierda/Derecha): \n");
             fflush(stdin);
             gets(aux.piernaHabil);
@@ -297,6 +306,7 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             strcpy(JugadorBuscadoLDL->dato.piernaHabil,aux.piernaHabil); ///Lo modifico en la LDL
             break;
         case 6:
+            system("cls");
             printf("Ingrese posicion del jugador (arquero/defensor/mediocampista/delantero): \n");
             fflush(stdin);
             gets(aux.posicion);
@@ -306,15 +316,14 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
             strcpy(JugadorBuscadoLDL->dato.posicion,aux.posicion); ///Lo modifico en la LDL
             break;
         case 7:
+            system("cls");
             if(jugadorBuscadoArbol->dato.estadoJugador==1)
             {
                 bajaJugador(arbolJugadores,listaPpl,nombreBuscado);
-                printf("\nEl estado del jugador ha sido modificado a 'de baja' correctamente.\n");
             }
             else
             {
                 altaJugador(arbolJugadores,listaPpl,nombreBuscado);
-                printf("\nEl estado del jugador ha sido modificado a 'de alta' correctamente.\n");
             }
             break;
         case 0:
@@ -394,6 +403,15 @@ nodoEquipo* buscarEquipoEnLDL(nodoEquipo* listaPpl,char nombreEquipo[])
     }
 
     return nodoBuscado;
+}
+
+void mostrarJugadorLDL(nodoEquipo* listaPpl,char nombreJugador[])
+{
+    while(listaPpl!=NULL)
+    {
+        buscarYmostrarJugador(listaPpl->listaDeJugadores,nombreJugador);
+        listaPpl=listaPpl->siguiente;
+    }
 }
 
 

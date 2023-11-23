@@ -42,6 +42,7 @@ jugador pasarJugador(registroArchivo aux);
 equipo pasarEquipo(registroArchivo aux);
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl);
 void mostrarLDL(nodoEquipo* LDL);
+void mostrarNombresEquipos(nodoEquipo* LDL);
 nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
@@ -54,6 +55,8 @@ void subMenuJugar(nodoEquipo* listaEquipos);
 void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
 void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
+void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
+void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
 
 //auxiliares
 void cuadroPantalla();
@@ -61,6 +64,7 @@ void cuadroPantalla();
 ///MAIN
 int main()
 {
+
 
     //cargarArchivo();
 
@@ -77,18 +81,11 @@ int main()
     //inorder(arbolJugadores);
 
 
-    int opcion,opcionAdmin,guardado;
-    char continuarPartido = 's';
-
-    char usurio[20];
-    char contrasenia[20];
-    int credenciales=0;
-    int seguir = 0;
+    int opcion,guardado;
 
     system("title=S.I.F.U (Simulador de Fulbo)");
 
     limitarCompilador();
-
 
 ///MENU
 
@@ -119,57 +116,8 @@ int main()
             subMenuBuscarJugador(arbolJugadores);
             break;
 
-        case 4:
-            system("cls");
-            printf("\n\nIngresaste al menu secreto: \n");
-            credenciales = sistemaLogin(usurio,contrasenia);
-
-            if(credenciales == 1)
-            {
-                do
-                {
-                    printf("\n\nMENU ADMIN\n");
-                    printf("\n1- Listados");
-                    printf("\n2- Alta");
-                    printf("\n3- Baja");
-                    printf("\n4- Modificacion");
-                    printf("\n0- Volver al menu anterior\n");
-                    scanf("%i",&opcionAdmin);
-                    switch(opcionAdmin)
-                    {
-                    case 1:
-                        system("cls");
-                        printf("Ingresaste a la opcion 1\n");
-                        system("pause");
-                        break;
-                    case 2:
-                        system("cls");
-                        printf("Ingresaste a la opcion 2\n");
-                        system("pause");
-                        break;
-                    case 3:
-                        system("cls");
-                        printf("Ingresaste a la opcion 3\n");
-                        system("pause");
-                        break;
-                    case 4:
-                        system("cls");
-                        printf("Ingresaste a la opcion 4\n");
-                        system("pause");
-                        break;
-                    case 0:
-                        system("cls");
-                        break;
-                    default:
-                        system("cls");
-                        printf("Error, opcion invalida. Intente nuevamente...");
-                        opcionAdmin=-1;
-                        break;
-                    }
-                }
-                while(opcionAdmin!=0);
-            }
-
+        case 912:
+            subMenuAdministrador(listaEquipos,arbolJugadores);
             break;
 
         case 0:
@@ -423,6 +371,7 @@ int sistemaLogin(char usu[],char contra[])
 
     if( (strcmp(usu,usuAdmin)== 0) && (strcmp(contra,contraAdmin) == 0) )
     {
+        system("cls");
         printf("\nIngresaste al modo admin, bienvenido: \n");
         credenciales = 1;
     }
@@ -589,6 +538,116 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
     system("pause");
 
+}
+
+void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
+{
+    int opcionAdmin;
+    char usurio[20];
+    char contrasenia[20];
+    int credenciales=0;
+    int seguir = 0;
+    system("cls");
+    printf("Ingresaste al menu secreto: \n");
+    credenciales = sistemaLogin(usurio,contrasenia);
+
+    if(credenciales == 1)
+    {
+        do
+        {
+            system("cls");
+            printf("MENU ADMIN\n");
+            printf("\n1- Sub menu jugadores");
+            printf("\n2- Sub menu equipos");
+            printf("\n0- Volver al menu anterior\n");
+            scanf("%i",&opcionAdmin);
+            switch(opcionAdmin)
+            {
+            case 1:
+                system("cls");
+                subSubmenuJugadores(listaPpl,arbolJugadores);
+                break;
+            case 2:
+                system("cls");
+                printf("Ingresaste a la opcion 2\n");
+                system("pause");
+                break;
+            case 0:
+                system("cls");
+                break;
+            default:
+                system("cls");
+                printf("Error, opcion invalida. Intente nuevamente...");
+                opcionAdmin=-1;
+                break;
+            }
+        }
+        while(opcionAdmin!=0);
+    }
+}
+
+void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
+{
+    int opcionJugadores=0;
+    char nombre[30];
+    do
+    {
+        system("cls");
+        printf("MENU JUGADORES\n");
+        printf("1- Dar de alta un jugador\n");
+        printf("2- Dar de baja un jugador\n");
+        printf("3- Modificar datos de un jugador\n");
+        printf("4- Consultar un jugador\n");
+        printf("0- Volver al menu anterior\n");
+        scanf("%i",&opcionJugadores);
+        switch(opcionJugadores)
+        {
+        case 1:
+            system("cls");
+            printf("Ingrese el nombre del jugador que desea dar de alta: \n");
+            fflush(stdin);
+            gets(nombre);
+            altaJugador(arbolJugadores,listaPpl,nombre);
+            system("pause");
+            break;
+        case 2:
+            system("cls");
+            printf("Ingrese el nombre del jugador que desea dar de baja: \n");
+            fflush(stdin);
+            gets(nombre);
+            bajaJugador(arbolJugadores,listaPpl,nombre);
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            printf("Ingrese el nombre del jugador cuyos datos desea modificar: \n");
+            fflush(stdin);
+            gets(nombre);
+            modificarJugador(listaPpl,arbolJugadores,nombre);
+            system("pause");
+            break;
+        case 4:
+            system("cls");
+            /*
+            printf("Ingrese el nombre del jugador cuyos datos desea consultar: \n");
+            fflush(stdin);
+            gets(nombre);
+            system("cls");
+            mostrarJugadorLDL(listaPpl,nombre);
+            */
+            subMenuBuscarJugador(arbolJugadores); ///Es mejor basicamente
+            break;
+        case 0:
+            system("cls");
+            break;
+        default:
+            system("cls");
+            printf("Error, opcion invalida. Intente nuevamente...");
+            opcionJugadores=-1;
+            break;
+        }
+    }
+    while(opcionJugadores!=0);
 }
 
 /*

@@ -29,7 +29,7 @@ nodoEquipo* buscarEquipoEnLDL(nodoEquipo* listaPpl,char nombreEquipo[]);
 void altaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
 void bajaJugador(nodoarbol* arbol,nodoEquipo* listaPpl,char nombreJugador[]);
 void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreBuscado[]);
-//La consulta es la funcion subMenuBuscarJugador
+void mostrarJugadorLDL(nodoEquipo* listaPpl,char nombreJugador[]); //Consulta
 
 ///Alta-Baja-Modificacion-Consulta de equipo
 void altaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[]);
