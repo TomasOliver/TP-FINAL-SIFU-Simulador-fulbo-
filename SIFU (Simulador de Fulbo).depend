@@ -442,3 +442,76 @@
 	"string.h"
 	"torneo.h"
 
+1700788040 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\equipo.c
+	<stdio.h>
+	<stdlib.h>
+	"equipo.h"
+
+1700788040 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\equipo.h
+
+1700697455 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1700697455 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\jugador.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"jugador.h"
+
+1700697455 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\jugador.h
+
+1700788040 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\listappl.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"listaPPL.h"
+
+1700788040 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\listappl.h
+	"equipo.h"
+	"subLista.h"
+
+1700786049 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\sublista.h
+	"jugador.h"
+
+1700796516 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\partido.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+	"partido.h"
+	"equipo.h"
+	"gotoxy.h"
+
+1700713457 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\partido.h
+	"equipo.h"
+
+1700697455 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.h
+
+1700706482 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\sublista.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"subLista.h"
+
+1700797571 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\main.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"equipo.h"
+	"jugador.h"
+	"listaPPL.h"
+	"partido.h"
+	"gotoxy.h"
+	"torneo.h"
+
+1700797571 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\torneo.h
+	"equipo.h"
+
+1700796371 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\torneo.c
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+	"torneo.h"
+

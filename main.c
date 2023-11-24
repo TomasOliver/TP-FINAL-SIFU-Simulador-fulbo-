@@ -915,7 +915,7 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJuga
         tabla=borrarTodaLaLista(tabla);
         tabla=pasarListaPPLATabla(listaPpl,tabla);
 
-        mostrarTabla(tabla);
+        tablaPuntos(tabla);
 
         i++;
 

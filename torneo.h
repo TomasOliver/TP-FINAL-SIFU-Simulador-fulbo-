@@ -36,5 +36,7 @@ void mostrarCruce(cruce partido1);
 void mostrarFecha(fecha aux);
 void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas);
 nodoTorneo* borrarTodaLaLista(nodoTorneo * lista);
+void tablaPuntos(nodoTorneo * lista);
+
 
 #endif // TORNEO_H_INCLUDED

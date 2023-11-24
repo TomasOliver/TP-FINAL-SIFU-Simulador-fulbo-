@@ -201,3 +201,126 @@ void mostrarTabla(nodoTorneo* lista)
         lista= lista->siguiente;
     }
 }
+
+void tablaPuntos(nodoTorneo * lista)
+{
+    // ESQUINAS //
+    gotoxy(25,7);
+    printf("*");
+    gotoxy(76,7);
+    printf("*");
+
+    gotoxy(25,21);
+    printf("*");
+    gotoxy(76,21);
+    printf("*");
+
+    // Linea Superior //
+
+    for(int i=26; i<76; i++)
+    {
+        gotoxy(i,7);
+        printf("-");
+
+        gotoxy(i,9);
+        printf("-");
+    }
+
+    // Linea Izquierda //
+
+    for(int k=8; k<21; k++)
+    {
+        gotoxy(25,k);
+        printf("|");
+    }
+
+
+    // Linea Derecha //
+    for(int l=8; l<21; l++)
+    {
+        gotoxy(76,l);
+        printf("|");
+
+    }
+
+    // Linea Inferior//
+    for(int j=26; j<76; j++)
+    {
+        gotoxy(j,21);
+        printf("-");
+    }
+
+    // Lineas del Medio verticales //
+    for(int l=8; l<21; l++)
+    {
+        gotoxy(70,l);
+        printf("|");
+
+        gotoxy(65,l);
+        printf("|");
+
+        gotoxy(60,l);
+        printf("|");
+
+        gotoxy(55,l);
+        printf("|");
+
+        gotoxy(50,l);
+        printf("|");
+
+        gotoxy(45,l);
+        printf("|");
+    }
+
+    // ENCABEZADO //
+    gotoxy(32,8);
+    printf("EQUIPOS");
+
+    gotoxy(47,8);
+    printf("PJ");
+
+    gotoxy(52,8);
+    printf("PG");
+
+    gotoxy(57,8);
+    printf("PE");
+
+    gotoxy(62,8);
+    printf("PP");
+
+    gotoxy(67,8);
+    printf("GF");
+
+    gotoxy(72,8);
+    printf("PTS");
+
+    //Nombre EQUIPOS//
+
+    int i = 10;
+    while(lista != NULL)
+    {
+    gotoxy(30,i);
+    printf("%s",lista->datoEquipo.nombreEquipo);
+
+    gotoxy(47,i);
+    printf("%i",lista->datoEquipo.partidosJugados);
+
+    gotoxy(52,i);
+    printf("%i",lista->datoEquipo.partidosGanados);
+
+    gotoxy(57,i);
+    printf("%i",lista->datoEquipo.partidosEmpatados);
+
+    gotoxy(62,i);
+    printf("%i",lista->datoEquipo.partidosPerdidos);
+
+    gotoxy(67,i);
+    printf("%i",lista->datoEquipo.golesEquipo);
+
+    gotoxy(72,i);
+    printf("%i",lista->datoEquipo.puntosEquipo);
+
+    i += 2;
+    lista=lista->siguiente;
+    }
+}

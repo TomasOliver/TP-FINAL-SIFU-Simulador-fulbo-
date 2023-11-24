@@ -166,7 +166,7 @@ int simularGol()
 {
     int probabilidad = rand() % 100;
 
-    if (probabilidad < 6)
+    if (probabilidad < 4)
     {
         return 1;  // Gol
     }
