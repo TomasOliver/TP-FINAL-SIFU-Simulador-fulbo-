@@ -926,8 +926,19 @@ void subSubMenuEquipos(nodoEquipo* listaPpl)
             break;
         case 4:
             system("cls");
-            //subMenuBuscarJugador(arbolJugadores);
-            ///HACER ESTA FUNCION
+            printf("Ingrese el nombre del equipo que desea buscar: \n");
+            fflush(stdin);
+            gets(nombre);
+            if(existeEquipo(listaPpl,nombre)==1)
+            {
+                equipo e=retornarEquipo(listaPpl,nombre);
+                mostrarDatosEquipo(e);
+            }
+            else
+            {
+                printf("\nError. El equipo no existe o no se encuentra registrado...\n");
+            }
+            system("pause");
             break;
         case 0:
             system("cls");
@@ -941,6 +952,17 @@ void subSubMenuEquipos(nodoEquipo* listaPpl)
         }
     }
     while(opcionEquipos!=0);
+}
+
+char* validarNombreEquipo2(nodoEquipo* listaPpl,char nombreEquipo[])
+{
+    while(existeEquipo(listaPpl,nombreEquipo)==0)
+    {
+        printf("Error. El equipo no existe o no esta registrado. Intente nuevamente...\n");
+        fflush(stdin);
+        gets(nombreEquipo);
+    }
+    return nombreEquipo;
 }
 
 void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas,nodoTorneo* tabla)

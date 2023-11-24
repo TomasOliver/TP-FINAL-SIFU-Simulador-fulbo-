@@ -14,6 +14,21 @@ void mostrar_equipo(equipo e)
     printf("Puntos: %i\n\n",e.puntosEquipo);
 }
 
+void mostrarDatosEquipo(equipo e)
+{
+    printf("\nNombre: %s\n",e.nombreEquipo);
+    printf("\nCalidad: %i\n",e.calidadEquipo);
+    if(e.estadoEquipo==1)
+    {
+        printf("\nEstado %s\n","De alta");
+
+    }
+    else
+    {
+        printf("\nEstado %s\n","De baja");
+    }
+}
+
 equipo validarCalidadEquipo(equipo e)
 {
     while(e.calidadEquipo<1 || e.calidadEquipo>5)
