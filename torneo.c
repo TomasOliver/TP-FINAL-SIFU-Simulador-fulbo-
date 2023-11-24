@@ -117,22 +117,29 @@ nodoTorneo * agregarPpio(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo)
     return lista;
 }
 
-
-nodoTorneo * agregarEnOrdenNombre(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo)
+nodoTorneo* agregarEnOrdenPuntos(nodoTorneo* lista, nodoTorneo* nuevoNodoTorneo)
 {
-    if(lista == NULL)
+    if (lista == NULL)
     {
         lista = nuevoNodoTorneo;
     }
     else
     {
-        if(strcmp(nuevoNodoTorneo->datoEquipo.nombreEquipo,lista->datoEquipo.nombreEquipo)<0)
+        if (nuevoNodoTorneo->datoEquipo.puntosEquipo > lista->datoEquipo.puntosEquipo ||
+                (nuevoNodoTorneo->datoEquipo.puntosEquipo == lista->datoEquipo.puntosEquipo &&
+                 nuevoNodoTorneo->datoEquipo.golesEquipo > lista->datoEquipo.golesEquipo))
+        {
             lista = agregarPpio(lista, nuevoNodoTorneo);
+        }
         else
         {
-            nodoTorneo * ante = lista;
-            nodoTorneo * seg = lista->siguiente;
-            while( (seg != NULL)&&(strcmp(nuevoNodoTorneo->datoEquipo.nombreEquipo,seg->datoEquipo.nombreEquipo)>=0) )
+            nodoTorneo* ante = lista;
+            nodoTorneo* seg = lista->siguiente;
+
+            while ((seg != NULL) &&
+                    ((nuevoNodoTorneo->datoEquipo.puntosEquipo < seg->datoEquipo.puntosEquipo) ||
+                     ((nuevoNodoTorneo->datoEquipo.puntosEquipo == seg->datoEquipo.puntosEquipo) &&
+                      (nuevoNodoTorneo->datoEquipo.golesEquipo < seg->datoEquipo.golesEquipo))))
             {
                 ante = seg;
                 seg = seg->siguiente;
@@ -145,61 +152,18 @@ nodoTorneo * agregarEnOrdenNombre(nodoTorneo * lista, nodoTorneo * nuevoNodoTorn
     return lista;
 }
 
-nodoTorneo * agregarEnOrdenPuntos(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo)
+nodoTorneo* borrarTodaLaLista(nodoTorneo * lista)
 {
-    if(lista == NULL)
+    nodoTorneo* proximo;
+    nodoTorneo* seg;
+    seg = lista;
+    while(seg != NULL)
     {
-        lista = nuevoNodoTorneo;
+        proximo = seg->siguiente;//tomo la dir del siguiente.
+        free(seg);//borro el actual.
+        seg = proximo;//actualizo el actual con la dir del siguiente, para avanzar
     }
-    else
-    {
-        if(nuevoNodoTorneo->datoEquipo.puntosEquipo>lista->datoEquipo.puntosEquipo)
-        {
-            lista = agregarPpio(lista, nuevoNodoTorneo);
-        }
-        else if(nuevoNodoTorneo->datoEquipo.puntosEquipo == lista->datoEquipo.puntosEquipo)
-        {
-            if(nuevoNodoTorneo->datoEquipo.golesEquipo>lista->datoEquipo.golesEquipo)
-            {
-                lista = agregarPpio(lista, nuevoNodoTorneo);
-            }
-            else
-            {
-                nodoTorneo * seg = lista->siguiente;
-                nuevoNodoTorneo->siguiente = seg->siguiente;
-                seg = nuevoNodoTorneo;
-            }
-        }
-        else
-        {
-            nodoTorneo * ante = lista;
-            nodoTorneo * seg = lista->siguiente;
-            while( (seg != NULL)&&(nuevoNodoTorneo->datoEquipo.puntosEquipo < seg->datoEquipo.puntosEquipo) )
-            {
-                ante = seg;
-                seg = seg->siguiente;
-            }
-            if(nuevoNodoTorneo->datoEquipo.puntosEquipo == seg->datoEquipo.puntosEquipo)
-            {
-                if(nuevoNodoTorneo->datoEquipo.golesEquipo>seg->datoEquipo.golesEquipo)
-                {
-                    nuevoNodoTorneo->siguiente = seg;
-                    ante->siguiente = nuevoNodoTorneo;
-                }
-                else
-                {
-                    seg->siguiente = nuevoNodoTorneo;
-                    ante->siguiente = seg;
-                }
-            }
-            else
-            {
-                nuevoNodoTorneo->siguiente = seg;
-                ante->siguiente = nuevoNodoTorneo;
-            }
-        }
-    }
-    return lista;
+    return seg;
 }
 
 void mostrarTorneo(fecha torneo[],int validos)

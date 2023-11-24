@@ -26,7 +26,6 @@ typedef struct
 nodoTorneo * inicListaTorneo();
 nodoTorneo * crearNodoTorneo(equipo dato);
 nodoTorneo * agregarPpio(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo);
-nodoTorneo * agregarEnOrdenNombre(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo);
 nodoTorneo * agregarEnOrdenPuntos(nodoTorneo * lista, nodoTorneo * nuevoNodoTorneo);
 void mostrarTabla(nodoTorneo* lista);
 void cargarTorneo(fecha torneo[], int dimension);
@@ -36,5 +35,6 @@ void mostrarTorneo(fecha torneo[],int validos);
 void mostrarCruce(cruce partido1);
 void mostrarFecha(fecha aux);
 void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas);
+nodoTorneo* borrarTodaLaLista(nodoTorneo * lista);
 
 #endif // TORNEO_H_INCLUDED

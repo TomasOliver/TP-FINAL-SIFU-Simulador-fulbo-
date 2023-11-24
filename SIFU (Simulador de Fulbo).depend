@@ -406,7 +406,7 @@
 	"string.h"
 	"subLista.h"
 
-1700787394 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
+1700795174 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -424,10 +424,10 @@
 	<stdlib.h>
 	<windows.h>
 
-1700766910 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.h
+1700795658 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.h
 	"equipo.h"
 
-1700772227 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.c
+1700795658 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\torneo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"

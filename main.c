@@ -52,8 +52,8 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
 int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
 void mostrarNombresEquipos(nodoEquipo* LDL);
 int sistemaLogin(char usu[],char contra[]);
-nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos);
-void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas);
+nodoTorneo* pasarListaPPLATabla(nodoEquipo* listaEquipos, nodoTorneo* tabla);
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas,nodoTorneo* tabla);
 int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
 void pasarTorneoToArchivoTorneo(fecha torneo[],int validos);
 void mostrarNombresEquipos(nodoEquipo* LDL);
@@ -98,7 +98,8 @@ int main()
 
     int validosTorneo=pasarArchivoTorneoToTorneo(torneo,10);
 
-    mostrarTorneo(torneo,validosTorneo);
+    //mostrarTorneo(torneo,validosTorneo);
+
 
     //simularFecha(torneo,validosTorneo,listaEquipos,0);
 
@@ -563,6 +564,8 @@ void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorn
 {
     int opcionTorneo;
     int fechasJugadas;
+    nodoTorneo* tabla=inicListaTorneo();
+    tabla=pasarListaPPLATabla(listaPpl,tabla);
 
     do
     {
@@ -582,10 +585,16 @@ void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorn
         case 1:
             fechasJugadas=torneo[0].fechasJugadas;
 
-            simularFecha(torneo,validosTorneo,listaPpl,fechasJugadas);
+            simularFecha(torneo,validosTorneo,listaPpl,fechasJugadas,tabla);
             break;
         case 2:
             mostrarTorneo(torneo,validosTorneo);
+            system("pause");
+            break;
+        case 3:
+            tabla=borrarTodaLaLista(tabla);
+            tabla=pasarListaPPLATabla(listaPpl,tabla);
+            mostrarTabla(tabla);
             system("pause");
             break;
         case 0:
@@ -840,7 +849,7 @@ void subSubMenuEquipos(nodoEquipo* listaPpl)
     while(opcionEquipos!=0);
 }
 
-void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas)
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas,nodoTorneo* tabla)
 {
     char continuar='s';
     int i=fechasJugadas;
@@ -903,7 +912,10 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJuga
         system("pause");
         system("cls");
 
-        ///ACA hay que actualizar la tabla con los datos de la LDL
+        tabla=borrarTodaLaLista(tabla);
+        tabla=pasarListaPPLATabla(listaPpl,tabla);
+
+        mostrarTabla(tabla);
 
         i++;
 
@@ -1057,33 +1069,6 @@ int compararArchivosTorneo()
 }
 
 
-
-/*
-void compararRegistro(registroArchivo aux,registroArchivo aux2)
-{
-    int flag=0;
-
-    aux.calidadEquipo==aux2.calidadEquipo;
-    aux.calidadJugador==aux2.calidadJugador;
-    aux.edad==aux2.edad;
-    aux.estadoEquipo==aux2.estadoEquipo;
-    aux.estadoJugador==aux2.estadoJugador;
-    aux.golesEquipo==aux2.golesEquipo;
-    strcmpi(aux.nacionalidadJugador,aux2.nacionalidadJugador);
-    strcmpi(aux.nombreEquipo,aux2.nombreEquipo);
-    strcmpi(aux.nombreJugador,aux2.nombreJugador);
-    aux.partidosEmpatados==aux2.partidosEmpatados;
-    aux.partidosGanados==aux2.partidosGanados;
-    aux.partidosJugados==aux2.partidosJugados;
-
-
-
-
-}
-*/
-
-
-
 void reiniciarArchivoTorneo()
 {
     FILE* archi=fopen(nombreArchivoTorneo,"wb");
@@ -1122,7 +1107,6 @@ void verificarPartidaGuardada()
 }
 
 
-
 /*
 void subMenuJugarTorneo(nodoEquipo * listaEquipos)
 {
@@ -1141,20 +1125,21 @@ void subMenuJugarTorneo(nodoEquipo * listaEquipos)
 
 
 }
+*/
 
-nodoTorneo * pasarListaPPLATabla(nodoEquipo * listaEquipos, nodoTorneo * tabla)
+nodoTorneo* pasarListaPPLATabla(nodoEquipo* listaEquipos, nodoTorneo* tabla)
 {
     nodoTorneo * auxTabla;
 
     while(listaEquipos!=NULL)
     {
         auxTabla =crearNodoTorneo(listaEquipos->dato);
-        tabla = agregarEnOrdenNombre(tabla,auxTabla);
+        tabla = agregarEnOrdenPuntos(tabla,auxTabla);
         listaEquipos= listaEquipos->siguiente;
     }
     return tabla;
 }
-*/
+
 
 void cuadroPantalla()
 {
