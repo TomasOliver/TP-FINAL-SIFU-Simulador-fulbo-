@@ -270,11 +270,17 @@ void tablaPuntos(nodoTorneo * lista)
 
         gotoxy(45,l);
         printf("|");
+
+        gotoxy(29,l);
+        printf("|");
     }
 
     // ENCABEZADO //
     gotoxy(32,8);
     printf("EQUIPOS");
+
+    gotoxy(27,8);
+    printf("P");
 
     gotoxy(47,8);
     printf("PJ");
@@ -297,30 +303,37 @@ void tablaPuntos(nodoTorneo * lista)
     //Nombre EQUIPOS//
 
     int i = 10;
+    int p = 1;
+
     while(lista != NULL)
     {
-    gotoxy(30,i);
-    printf("%s",lista->datoEquipo.nombreEquipo);
 
-    gotoxy(47,i);
-    printf("%i",lista->datoEquipo.partidosJugados);
+        gotoxy(27,i);
+        printf("%i",p);
 
-    gotoxy(52,i);
-    printf("%i",lista->datoEquipo.partidosGanados);
+        gotoxy(31,i);
+        printf("%s",lista->datoEquipo.nombreEquipo);
 
-    gotoxy(57,i);
-    printf("%i",lista->datoEquipo.partidosEmpatados);
+        gotoxy(47,i);
+        printf("%i",lista->datoEquipo.partidosJugados);
 
-    gotoxy(62,i);
-    printf("%i",lista->datoEquipo.partidosPerdidos);
+        gotoxy(52,i);
+        printf("%i",lista->datoEquipo.partidosGanados);
 
-    gotoxy(67,i);
-    printf("%i",lista->datoEquipo.golesEquipo);
+        gotoxy(57,i);
+        printf("%i",lista->datoEquipo.partidosEmpatados);
 
-    gotoxy(73,i);
-    printf("%i",lista->datoEquipo.puntosEquipo);
+        gotoxy(62,i);
+        printf("%i",lista->datoEquipo.partidosPerdidos);
 
-    i += 2;
-    lista=lista->siguiente;
+        gotoxy(67,i);
+        printf("%i",lista->datoEquipo.golesEquipo);
+
+        gotoxy(73,i);
+        printf("%i",lista->datoEquipo.puntosEquipo);
+
+        i += 2;
+        p++;
+        lista=lista->siguiente;
     }
 }
