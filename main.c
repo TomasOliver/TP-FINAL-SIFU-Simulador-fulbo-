@@ -105,6 +105,7 @@ int main()
 
 
     //mostrarLDL(listaEquipos);
+    //system("pause");
 
 
     nodoarbol* arbolJugadores=inicArbol();
@@ -264,7 +265,7 @@ int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension)
 
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl)
 {
-    FILE* archi=fopen("archivo.bin","rb");
+    FILE* archi=fopen(nombreArchivo,"rb");
     registroArchivo aux;
     jugador j;
     equipo e;
@@ -1016,6 +1017,12 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJuga
         scanf("%c",&continuar);
         system("cls");
     }
+    if(i==10)
+    {
+        tabla=borrarTodaLaLista(tabla);
+        tabla=pasarListaPPLATabla(listaPpl,tabla);
+        multiplesExplosiones(20,tabla->datoEquipo.nombreEquipo);
+    }
 
     guardarFechasJugadasEnTorneo(torneo,validos,i);
 }
@@ -1199,25 +1206,6 @@ void verificarPartidaGuardada()
 }
 
 
-/*
-void subMenuJugarTorneo(nodoEquipo * listaEquipos)
-{
-    nodoTorneo * tabla = inicListaTorneo();
-    tabla = pasarListaPPLATabla(listaEquipos,tabla);
-
-    printf("\nTorneo SIFU:");
-    mostrarTabla(tabla);
-
-    char continuarFecha = 's';
-    int contarFecha = 0;
-    while(continuarFecha = 's')
-    {
-        simularPartido(arr)
-    }
-
-
-}
-*/
 
 nodoTorneo* pasarListaPPLATabla(nodoEquipo* listaEquipos, nodoTorneo* tabla)
 {

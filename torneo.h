@@ -37,6 +37,11 @@ void mostrarFecha(fecha aux);
 void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas);
 nodoTorneo* borrarTodaLaLista(nodoTorneo * lista);
 void tablaPuntos(nodoTorneo * lista);
+void explosion(int centro, int altura, char logoGanador[]);
+void multiplesExplosiones(int cantidadDeExplosiones, char logoGanador[]);
+void delay(int milliseconds);
+
+
 
 
 #endif // TORNEO_H_INCLUDED

@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "string.h"
 #include "torneo.h"
+#include "gotoxy.h"
+#include "time.h"
+#include "windows.h"
 
 void guardarFechasJugadasEnTorneo(fecha torneo[],int validos,int fechasJugadas)
 {
@@ -336,4 +339,69 @@ void tablaPuntos(nodoTorneo * lista)
         p++;
         lista=lista->siguiente;
     }
+}
+
+void explosion(int centro, int altura, char logoGanador[])
+{
+    int i, j;
+
+    for (i = 0; i < 4; i++)
+    {
+        system("cls");
+        gotoxy(42,9);
+        printf("!!%s!!",logoGanador);
+        gotoxy(35,10);
+        printf("!!Campeon del Torneo SIFU!!");
+
+        // Imprimir parte superior de la explosión
+        for (j = 0; j < i; j++)
+        {
+            gotoxy(centro, altura - j);
+            printf("*");
+        }
+
+        // Imprimir parte inferior de la explosión
+        for (j = 0; j < i; j++)
+        {
+            gotoxy(centro, altura + j);
+            printf("*");
+        }
+
+        // Imprimir parte izquierda de la explosión
+        for (j = 0; j < i; j++)
+        {
+            gotoxy(centro - j * 3, altura);
+            printf("*");
+        }
+
+        // Imprimir parte derecha de la explosión
+        for (j = 0; j < i; j++)
+        {
+            gotoxy(centro + j * 3, altura);
+            printf("*");
+        }
+
+        delay(20);
+    }
+
+}
+
+void multiplesExplosiones(int cantidadDeExplosiones, char logoGanador[])
+{
+    srand(time(NULL));
+
+    for(int i=0; i<cantidadDeExplosiones; i++)
+    {
+
+        int centro = rand() % 97 + 4;
+        int altura = rand() % 30;
+
+        explosion(centro,altura,logoGanador);
+
+    }
+}
+
+void delay(int milliseconds)
+{
+    Sleep(milliseconds);
 }
