@@ -11,6 +11,8 @@
 ///Constantes
 const char nombreArchivo[]= {"archivo.bin"}; ///datos de equipos y jugadores
 const char nombreArchivoTorneo[]= {"archivoTorneo.bin"}; ///Datos del torneo
+const char nombreArchivoOriginal[]= {"archivoOriginal.bin"}; ///datos de equipos y jugadores base
+const char nombreArchivoTorneoOriginal[]= {"archivoTorneoOriginal.bin"}; ///Datos del torneo base
 const char usuAdmin[20] = "admin";
 const char contraAdmin[20] = "admin";
 
@@ -58,17 +60,24 @@ void mostrarNombresEquipos(nodoEquipo* LDL);
 void pasarListaPplToArchivo(nodoEquipo* listaPpl);
 registroArchivo pasarEquipoToRegistro(equipo e);
 registroArchivo pasarJugadorToRegistro(jugador j);
+int validarGuardado(int opcionGuardado);
+void reiniciarArchivoRegistros();
+void reiniciarArchivoTorneo();
+int compararArchivosTorneo();
+void verificarPartidaGuardada();
 
 
 void menuInicial();
 void menuPrincipal();
+void subMenuJugar(nodoEquipo* listaEquipos,fecha torneo[],int validosTorneo);
 void subMenuVerEquipos(nodoEquipo* listaEquipos);
 void subMenuBuscarJugador(nodoarbol* arbolJugadores);
-void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
+void subMenuGuardado(fecha torneo[],int validosTorneo,nodoEquipo* listaEquipos);
 void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
-void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
-void subMenuJugar(nodoEquipo* listaEquipos,fecha torneo[],int validosTorneo);
+void subSubMenuSimularPartido(nodoEquipo* listaEquipos);
+void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
 void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorneo);
+void subSubMenuEquipos(nodoEquipo* listaPpl);
 
 ///auxiliares
 void cuadroPantalla();
@@ -78,6 +87,8 @@ int main()
 {
     //cargarArchivo();
     //cargarArchivoTorneo();
+
+    verificarPartidaGuardada();
 
     nodoEquipo* listaEquipos=inicEquipo();
 
@@ -91,6 +102,7 @@ int main()
 
     //simularFecha(torneo,validosTorneo,listaEquipos,0);
 
+
     //mostrarLDL(listaEquipos);
 
 
@@ -100,7 +112,7 @@ int main()
     //inorder(arbolJugadores);
 
 
-    int opcion,guardado;
+    int opcion;
 
     system("title=S.I.F.U (Simulador de Fulbo)");
 
@@ -129,9 +141,11 @@ int main()
         case 1:
             subMenuJugar(listaEquipos,torneo,validosTorneo);
             break;
+
         case 2:
             subMenuVerEquipos(listaEquipos);
             break;
+
         case 3:
             subMenuBuscarJugador(arbolJugadores);
             break;
@@ -141,19 +155,9 @@ int main()
             break;
 
         case 0:
-            system("cls");
-            printf("Desea guardar los datos modificados en partida? \n1- si / 2- no \n");
-            fflush(stdin);
-            scanf("%i",&guardado);
-            ///Validar opcion
-            if(guardado==1)
-            {
-                pasarTorneoToArchivoTorneo(torneo,validosTorneo);
-                pasarListaPplToArchivo(listaEquipos);
-            }
-
-            printf("\nSaliendo del programa...\n");
+            subMenuGuardado(torneo,validosTorneo,listaEquipos);
             break;
+
         default:
             printf("Error, opcion invalida. Intente nuevamente...\n");
             opcion=-1;
@@ -388,7 +392,8 @@ void mostrarNombresEquipos(nodoEquipo* LDL) ///Sacar
 {
     while(LDL!=NULL)
     {
-        printf("-%s\n",LDL->dato.nombreEquipo);
+        printf("-%s - Calidad: %i\n",LDL->dato.nombreEquipo,LDL->dato.calidadEquipo);
+
         LDL=LDL->siguiente;
     }
 }
@@ -692,11 +697,11 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
             {
             case 1:
                 system("cls");
-                subSubmenuJugadores(listaPpl,arbolJugadores);
+                subSubMenuJugadores(listaPpl,arbolJugadores);
                 break;
             case 2:
                 system("cls");
-                printf("Ingresaste a la opcion 2\n");
+                subSubMenuEquipos(listaPpl);
                 system("pause");
                 break;
             case 0:
@@ -713,7 +718,7 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
     }
 }
 
-void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
+void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
 {
     int opcionJugadores=0;
     char nombre[30];
@@ -775,6 +780,64 @@ void subSubmenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
         }
     }
     while(opcionJugadores!=0);
+}
+
+void subSubMenuEquipos(nodoEquipo* listaPpl)
+{
+    int opcionEquipos=0;
+    char nombre[30];
+    do
+    {
+        system("cls");
+        printf("MENU JUGADORES\n");
+        printf("1- Dar de alta un equipo\n");
+        printf("2- Dar de baja un equipo\n");
+        printf("3- Modificar datos de un equipo\n");
+        printf("4- Consultar un equipo\n");
+        printf("0- Volver al menu anterior\n");
+        scanf("%i",&opcionEquipos);
+        switch(opcionEquipos)
+        {
+        case 1:
+            system("cls");
+            printf("Ingrese el nombre del equipo que desea dar de alta: \n");
+            fflush(stdin);
+            gets(nombre);
+            altaEquipo(listaPpl,nombre);
+            system("pause");
+            break;
+        case 2:
+            system("cls");
+            printf("Ingrese el nombre del equipo que desea dar de baja: \n");
+            fflush(stdin);
+            gets(nombre);
+            bajaEquipo(listaPpl,nombre);
+            system("pause");
+            break;
+        case 3:
+            system("cls");
+            printf("Ingrese el nombre del equipo cuyos datos desea modificar: \n");
+            fflush(stdin);
+            gets(nombre);
+            modificarEquipo(listaPpl,nombre);
+            system("pause");
+            break;
+        case 4:
+            system("cls");
+            //subMenuBuscarJugador(arbolJugadores);
+            ///HACER ESTA FUNCION
+            break;
+        case 0:
+            system("cls");
+            break;
+        default:
+            system("cls");
+            printf("Error, opcion invalida. Intente nuevamente...");
+            opcionEquipos=-1;
+            break;
+        }
+    }
+    while(opcionEquipos!=0);
 }
 
 void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas)
@@ -918,6 +981,146 @@ registroArchivo pasarEquipoToRegistro(equipo e)
 }
 
 
+int validarGuardado(int opcionGuardado)
+{
+    while(opcionGuardado!=1 && opcionGuardado!=2)
+    {
+        printf("\nError.Opcion invalida. Intente nuevamente...\n");
+        fflush(stdin);
+        scanf("%i",&opcionGuardado);
+    }
+    return opcionGuardado;
+}
+
+void subMenuGuardado(fecha torneo[],int validosTorneo,nodoEquipo* listaEquipos)
+{
+    int guardado;
+
+    system("cls");
+
+    printf("Desea guardar los datos modificados en partida? \n1- si / 2- no \n");
+    fflush(stdin);
+    scanf("%i",&guardado);
+    guardado=validarGuardado(guardado);
+
+    system("cls");
+
+    if(guardado==1)
+    {
+        pasarTorneoToArchivoTorneo(torneo,validosTorneo);
+        pasarListaPplToArchivo(listaEquipos);
+        printf("Los datos han sido guardados con exito.\n");
+    }
+
+    printf("Saliendo del programa...\n");
+}
+
+void reiniciarArchivoRegistros()
+{
+    FILE* archi=fopen(nombreArchivo,"wb");
+    FILE* archi2=fopen(nombreArchivoOriginal,"rb");
+    registroArchivo aux;
+
+    if(archi!=NULL && archi2!=NULL)
+    {
+        while(fread(&aux,sizeof(registroArchivo),1,archi2)>0)
+        {
+            fwrite(&aux,sizeof(registroArchivo),1,archi);
+        }
+        fclose(archi);
+        fclose(archi2);
+    }
+}
+
+int compararArchivosTorneo()
+{
+    FILE* archi=fopen(nombreArchivoTorneo,"rb");
+    FILE* archi2=fopen(nombreArchivoTorneoOriginal,"rb");
+    fecha aux;
+    fecha aux2;
+    int flag=1;
+
+    if(archi!=NULL && archi2!=NULL)
+    {
+        while(fread(&aux,sizeof(fecha),1,archi2)>0 && fread(&aux2,sizeof(fecha),1,archi)>0 && flag==1)
+        {
+            if(aux.fechasJugadas!=aux2.fechasJugadas)
+            {
+                flag=0;
+            }
+        }
+        fclose(archi);
+        fclose(archi2);
+
+    }
+    return flag;
+}
+
+
+
+/*
+void compararRegistro(registroArchivo aux,registroArchivo aux2)
+{
+    int flag=0;
+
+    aux.calidadEquipo==aux2.calidadEquipo;
+    aux.calidadJugador==aux2.calidadJugador;
+    aux.edad==aux2.edad;
+    aux.estadoEquipo==aux2.estadoEquipo;
+    aux.estadoJugador==aux2.estadoJugador;
+    aux.golesEquipo==aux2.golesEquipo;
+    strcmpi(aux.nacionalidadJugador,aux2.nacionalidadJugador);
+    strcmpi(aux.nombreEquipo,aux2.nombreEquipo);
+    strcmpi(aux.nombreJugador,aux2.nombreJugador);
+    aux.partidosEmpatados==aux2.partidosEmpatados;
+    aux.partidosGanados==aux2.partidosGanados;
+    aux.partidosJugados==aux2.partidosJugados;
+
+
+
+
+}
+*/
+
+
+
+void reiniciarArchivoTorneo()
+{
+    FILE* archi=fopen(nombreArchivoTorneo,"wb");
+    FILE* archi2=fopen(nombreArchivoTorneoOriginal,"rb");
+    fecha aux;
+
+    if(archi!=NULL && archi2!=NULL)
+    {
+        while(fread(&aux,sizeof(fecha),1,archi2)>0)
+        {
+            fwrite(&aux,sizeof(fecha),1,archi);
+        }
+        fclose(archi);
+        fclose(archi2);
+    }
+}
+
+void verificarPartidaGuardada()
+{
+    if(compararArchivosTorneo()==0)
+    {
+        int opcionNuevoTorneo;
+        system("cls");
+        printf("Hay una partida guardada. Desea continuar?\n");
+        printf("1-Si\n");
+        printf("2-No\n");
+        fflush(stdin);
+        scanf("%i",&opcionNuevoTorneo);
+        opcionNuevoTorneo=validarGuardado(opcionNuevoTorneo);
+        if(opcionNuevoTorneo==2)
+        {
+            reiniciarArchivoRegistros();
+            reiniciarArchivoTorneo();
+        }
+    }
+}
+
 
 
 /*
@@ -1017,3 +1220,4 @@ void menuPrincipal()
     gotoxy(5,8);
     printf("0- Salir del programa\n");
 }
+

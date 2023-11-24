@@ -238,7 +238,6 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
         jugador aux2;
         int opcion;
 
-
         printf("Que dato desea modificar?\n");
         printf("1-Nombre y Apellido\n");
         printf("2-Nacionalidad\n");
@@ -338,6 +337,65 @@ void modificarJugador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombre
     }
 }
 
+void modificarEquipo(nodoEquipo* listaPpl,char nombreBuscado[])
+{
+    if(existeEquipo(listaPpl,nombreBuscado)==1)
+    {
+        nodoEquipo* EquipoBuscadoLDL=buscarEquipoEnLDL(listaPpl,nombreBuscado);
+
+        equipo aux;
+
+        int opcion;
+
+        printf("Que dato desea modificar?\n");
+        printf("1-Nombre\n");
+        printf("2-Calidad\n");
+        printf("3-Estado\n");
+        printf("0-Ninguno\n");
+        scanf("%i",&opcion);
+        switch(opcion)
+        {
+        case 1:
+            system("cls");
+            printf("Ingrese el nuevo nombre del equipo: \n");
+            fflush(stdin);
+            gets(aux.nombreEquipo);
+            aux=validarNombreEquipo(listaPpl,aux);
+
+            strcpy(EquipoBuscadoLDL->dato.nombreEquipo,aux.nombreEquipo);
+            break;
+        case 2:
+            system("cls");
+            printf("Ingrese nueva calidad del equipo (entre 1 y 5): \n");
+            scanf("%i",&aux.calidadEquipo);
+            aux=validarCalidadEquipo(aux);
+
+
+            EquipoBuscadoLDL->dato.calidadEquipo=aux.calidadEquipo;
+            break;
+        case 3:
+            system("cls");
+            if(EquipoBuscadoLDL->dato.estadoEquipo==1)
+            {
+                bajaEquipo(listaPpl,nombreBuscado);
+            }
+            else
+            {
+                altaEquipo(listaPpl,nombreBuscado);
+            }
+            break;
+        case 0:
+            system("cls");
+            break;
+
+        }
+    }
+    else
+    {
+        printf("\nError. El jugador no existe o no se encuentra registrado...\n");
+    }
+}
+
 jugador validarNombreJugador(nodoarbol* arbolJugadores,jugador j)
 {
     while(existeJugador(arbolJugadores,j.nombreJugador)==1)
@@ -349,7 +407,8 @@ jugador validarNombreJugador(nodoarbol* arbolJugadores,jugador j)
     return j;
 }
 
-void altaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[])
+
+void altaEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
 {
     if(existeEquipo(listaPpl,nombreEquipo)==1)
     {
@@ -369,7 +428,7 @@ void altaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo
     }
 }
 
-void bajaEquipo(nodoEquipo* listaPpl,nodoarbol* arbolJugadores,char nombreEquipo[])
+void bajaEquipo(nodoEquipo* listaPpl,char nombreEquipo[])
 {
     if(existeEquipo(listaPpl,nombreEquipo)==1)
     {
@@ -412,6 +471,17 @@ void mostrarJugadorLDL(nodoEquipo* listaPpl,char nombreJugador[])
         buscarYmostrarJugador(listaPpl->listaDeJugadores,nombreJugador);
         listaPpl=listaPpl->siguiente;
     }
+}
+
+equipo validarNombreEquipo(nodoEquipo* listaPpl,equipo e)
+{
+    while(existeEquipo(listaPpl,e.nombreEquipo)==1)
+    {
+        printf("Error. El nombre ya esta registrado. Intente con otro nombre...\n");
+        fflush(stdin);
+        gets(e.nombreEquipo);
+    }
+    return e;
 }
 
 

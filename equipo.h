@@ -18,6 +18,8 @@ typedef struct
 
 ///Prototipado
 void mostrar_equipo(equipo e);
+equipo validarCalidadEquipo(equipo e);
+
 
 
 

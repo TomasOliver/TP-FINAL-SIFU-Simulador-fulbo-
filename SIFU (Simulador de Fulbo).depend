@@ -360,12 +360,12 @@
 
 1700367231 c:\users\tomas\onedrive - utn frmdp\facultad\2ºdo cuatri\programacion y labo\tp final\tp-final-sifu-simulador-fulbo-\gotoxy.h
 
-1700761573 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.c
+1700781221 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.c
 	<stdio.h>
 	<stdlib.h>
 	"equipo.h"
 
-1700715148 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
+1700781221 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\equipo.h
 
 1700680196 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
@@ -375,13 +375,13 @@
 
 1700679416 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700772074 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
+1700781227 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700697737 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
+1700781280 c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
@@ -406,7 +406,7 @@
 	"string.h"
 	"subLista.h"
 
-1700773946 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
+1700787394 source:c:\users\mauro\documents\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"

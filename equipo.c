@@ -14,4 +14,17 @@ void mostrar_equipo(equipo e)
     printf("Puntos: %i\n\n",e.puntosEquipo);
 }
 
+equipo validarCalidadEquipo(equipo e)
+{
+    while(e.calidadEquipo<1 || e.calidadEquipo>5)
+    {
+        printf("Error, valor invalido. El minimo es 1 y el maximo es 5. Intente nuevamente...\n");
+        fflush(stdin);
+        scanf("%i",&e.calidadEquipo);
+    }
+    return e;
+}
+
+
+
 
