@@ -294,24 +294,29 @@ jugador validarPosicionJugador(jugador j)
 
 void mostrar_jugador(jugador a)
 {
+    cuadroPantalla();
+
+    gotoxy(5,3);
     printf("Nombre y apellido: %s\n",a.nombreJugador);
-
+    gotoxy(5,4);
     printf("Nacionalidad: %s\n",a.nacionalidadJugador);
-
+    gotoxy(5,5);
     printf("Calidad: %i\n",a.calidadJugador);
-
+    gotoxy(5,6);
     printf("Edad: %i\n",a.edad);
-
+    gotoxy(5,7);
     printf("Pierna habil: %s\n",a.piernaHabil);
-
+    gotoxy(5,8);
     printf("Posicion: %s\n",a.posicion);
 
     if(a.estadoJugador==1)
     {
+        gotoxy(5,9);
         printf("Estado: Activo\n\n");
     }
     else
     {
+        gotoxy(5,9);
         printf("Estado: De baja\n\n");
     }
 }

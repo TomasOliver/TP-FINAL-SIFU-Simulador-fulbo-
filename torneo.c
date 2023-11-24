@@ -317,7 +317,7 @@ void tablaPuntos(nodoTorneo * lista)
     gotoxy(67,i);
     printf("%i",lista->datoEquipo.golesEquipo);
 
-    gotoxy(72,i);
+    gotoxy(73,i);
     printf("%i",lista->datoEquipo.puntosEquipo);
 
     i += 2;

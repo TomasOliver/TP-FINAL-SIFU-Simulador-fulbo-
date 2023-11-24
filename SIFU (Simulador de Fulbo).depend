@@ -130,12 +130,14 @@
 	"string.h"
 	"subLista.h"
 
-1700679490 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.c
+1700792369 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.c
+	<stdio.h>
+	<stdlib.h>
 	"equipo.h"
 
-1700685365 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
+1700792369 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\equipo.h
 
-1700685365 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
+1700801470 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -143,17 +145,17 @@
 
 1700685365 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\jugador.h
 
-1700700548 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
+1700792369 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
 	"listaPPL.h"
 
-1700700548 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
+1700792369 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\listappl.h
 	"equipo.h"
 	"subLista.h"
 
-1700685365 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.h
+1700767466 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.h
 	"jugador.h"
 
 1700700548 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\sublista.c
@@ -162,7 +164,7 @@
 	"string.h"
 	"subLista.h"
 
-1700709821 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
+1700801436 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -176,7 +178,7 @@
 1700708640 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.h
 	"equipo.h"
 
-1700710313 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.c
+1700798481 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\partido.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -293,7 +295,7 @@
 	"listaPPL.h"
 	"partido.h"
 
-1700691671 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\gotoxy.c
+1700784942 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\gotoxy.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -433,10 +435,10 @@
 	"string.h"
 	"torneo.h"
 
-1700679490 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\torneo.h
+1700798481 c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\torneo.h
 	"equipo.h"
 
-1700700548 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\torneo.c
+1700800919 source:c:\users\usuario\onedrive\escritorio\cosas\tp laboratorio\tp-final-sifu-simulador-fulbo-\torneo.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"

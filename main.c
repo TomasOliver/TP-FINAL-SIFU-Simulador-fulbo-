@@ -389,12 +389,18 @@ nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol)
     return arbol;
 }
 
-void mostrarNombresEquipos(nodoEquipo* LDL) ///Sacar
+void mostrarNombresEquipos(nodoEquipo* LDL)
 {
+    gotoxy(15,2);
+    printf("EQUIPOS");
+    int y = 4;
+
     while(LDL!=NULL)
     {
+        gotoxy(5,y);
         printf("-%s - Calidad: %i\n",LDL->dato.nombreEquipo,LDL->dato.calidadEquipo);
 
+        y++;
         LDL=LDL->siguiente;
     }
 }
@@ -428,22 +434,28 @@ int sistemaLogin(char usu[],char contra[])
 
     int credenciales = 0; // 0 invalidas, 1 validas;
 
+    gotoxy(5,4);
     printf("Ingrese su usuario: ");
     fflush(stdin);
+    gotoxy(5,5);
     scanf("%s",usu);
 
+    gotoxy(5,7);
     printf("Ingrese la contrasenia: ");
+    gotoxy(5,8);
     fflush(stdin);
     scanf("%s",contra);
 
     if( (strcmp(usu,usuAdmin)== 0) && (strcmp(contra,contraAdmin) == 0) )
     {
         system("cls");
+        gotoxy(5,3);
         printf("\nIngresaste al modo admin, bienvenido: \n");
         credenciales = 1;
     }
     else
     {
+        gotoxy(5,6);
         printf("Ingresaste un usuario o contrasenia incorrecta \n");
         credenciales = 0;
     }
@@ -462,9 +474,12 @@ void subMenuVerEquipos(nodoEquipo* listaEquipos)
         flag=0;
         while(flag==0)
         {
+            cuadroPantalla();
             mostrarNombresEquipos(listaEquipos);
-            printf("\nIngrese nombre del equipo cuyo plantel desee ver: \n");
+            gotoxy(5,11);
+            printf("Ingrese nombre del equipo cuyo plantel desee ver: \n");
             fflush(stdin);
+            gotoxy(5,12);
             gets(nombreBuscado);
             flag=mostrarJugadoresPorNombreEquipo(listaEquipos,nombreBuscado);
         }
@@ -485,23 +500,29 @@ void subMenuBuscarJugador(nodoarbol* arbolJugadores)
     while(continuar=='s')
     {
         system("cls");
+        cuadroPantalla();
+        gotoxy(5,3);
         printf("Ingrese el nombre y apellido del jugador buscado: \n");
         fflush(stdin);
+        gotoxy(5,4);
         gets(nombreBuscado);
 
         nodoBuscado=buscar(arbolJugadores,nombreBuscado);
 
         if(nodoBuscado==NULL)
         {
-            printf("\nError.El jugador no esta registrado.\n");
+            gotoxy(5,6);
+            printf("Error.El jugador no esta registrado.\n");
         }
         else
         {
             system("cls");
             mostrar_jugador(nodoBuscado->dato);
         }
-        printf("Desea buscar otro jugador? (s/n)\n");
+        gotoxy(5,11);
+        printf("Desea buscar otro jugador? (s/n)");
         fflush(stdin);
+        gotoxy(5,12);
         scanf("%c",&continuar);
     }
     system("cls");
@@ -571,12 +592,25 @@ void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorn
     {
         system("cls");
 
+        for(int i=1; i<99; i++)
+        {
+            gotoxy(i,3);
+            printf("-");
+        }
+
+        cuadroPantalla();
+        gotoxy(42,2);
         printf("MENU TORNEO\n");
+        gotoxy(5,5);
         printf("1-Simular Torneo\n");
+        gotoxy(5,6);
         printf("2-Ver Fechas y cruces\n");
+        gotoxy(5,7);
         printf("3-Ver tabla del torneo\n");
+        gotoxy(5,8);
         printf("0-Volver al menu anterior\n");
 
+        gotoxy(2,24);
         scanf("%i", &opcionTorneo);
         system("cls");
 
@@ -594,7 +628,8 @@ void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorn
         case 3:
             tabla=borrarTodaLaLista(tabla);
             tabla=pasarListaPPLATabla(listaPpl,tabla);
-            mostrarTabla(tabla);
+            tablaPuntos(tabla);
+            gotoxy(1,23);
             system("pause");
             break;
         case 0:
@@ -620,14 +655,19 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
 
     while(flag==0)
     {
+        cuadroPantalla();
         mostrarNombresEquipos(listaEquipos);
 
-        printf("\nIngrese el nombre del primer equipo\n");
+        gotoxy(5,12);
+        printf("Ingrese el nombre del primer equipo\n");
         fflush(stdin);
+        gotoxy(5,13);
         gets(nombreEquipoA);
 
-        printf("\nIngrese el nombre del segundo equipo\n");
+        gotoxy(5,15);
+        printf("Ingrese el nombre del segundo equipo\n");
         fflush(stdin);
+        gotoxy(5,16);
         gets(nombreEquipoB);
 
 
@@ -639,26 +679,34 @@ void subSubMenuSimularPartido(nodoEquipo* listaEquipos)
             }
             else
             {
+                gotoxy(5,18);
                 printf("Error. Un equipo no puede jugar contra si mismo. Intente nuevamente...\n");
+                gotoxy(5,19);
                 system("pause");
                 system("cls");
             }
         }
         else if(existeEquipo(listaEquipos,nombreEquipoA)!=1 && existeEquipo(listaEquipos,nombreEquipoB)!=1)
         {
+            gotoxy(5,18);
             printf("Error. Los equipos ingresados no son validos. Intente nuevamente...\n");
+            gotoxy(5,19);
             system("pause");
             system("cls");
         }
         else if(existeEquipo(listaEquipos,nombreEquipoA)!=1)
         {
+            gotoxy(5,18);
             printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoA);
+            gotoxy(5,19);
             system("pause");
             system("cls");
         }
         else
         {
+            gotoxy(5,18);
             printf("Error. El equipo ingresado %s no es valido. Intente nuevamente...\n",nombreEquipoB);
+            gotoxy(5,19);
             system("pause");
             system("cls");
         }
@@ -688,7 +736,11 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
     char usurio[20];
     char contrasenia[20];
     int credenciales=0;
+
     system("cls");
+
+    cuadroPantalla();
+    gotoxy(5,2);
     printf("Ingresaste al menu secreto: \n");
     credenciales = sistemaLogin(usurio,contrasenia);
 
@@ -697,10 +749,22 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
         do
         {
             system("cls");
+            cuadroPantalla();
+
+            for(int i=1; i<99; i++)
+            {
+                gotoxy(i,3);
+                printf("-");
+            }
+            gotoxy(42,2);
             printf("MENU ADMIN\n");
-            printf("\n1- Sub menu jugadores");
-            printf("\n2- Sub menu equipos");
-            printf("\n0- Volver al menu anterior\n");
+            gotoxy(5,5);
+            printf("1- Menu jugadores");
+            gotoxy(5,6);
+            printf("2- Menu equipos");
+            gotoxy(5,7);
+            printf("0- Volver al menu anterior\n");
+            gotoxy(5,24);
             scanf("%i",&opcionAdmin);
             switch(opcionAdmin)
             {
@@ -711,13 +775,13 @@ void subMenuAdministrador(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
             case 2:
                 system("cls");
                 subSubMenuEquipos(listaPpl);
-                system("pause");
                 break;
             case 0:
                 system("cls");
                 break;
             default:
                 system("cls");
+                gotoxy(5,5);
                 printf("Error, opcion invalida. Intente nuevamente...");
                 opcionAdmin=-1;
                 break;
@@ -734,12 +798,28 @@ void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
     do
     {
         system("cls");
+
+        cuadroPantalla();
+
+        for(int i=1; i<99; i++)
+        {
+            gotoxy(i,3);
+            printf("-");
+        }
+
+        gotoxy(42,2);
         printf("MENU JUGADORES\n");
+        gotoxy(5,5);
         printf("1- Dar de alta un jugador\n");
+        gotoxy(5,6);
         printf("2- Dar de baja un jugador\n");
+        gotoxy(5,7);
         printf("3- Modificar datos de un jugador\n");
+        gotoxy(5,8);
         printf("4- Consultar un jugador\n");
+        gotoxy(5,9);
         printf("0- Volver al menu anterior\n");
+        gotoxy(5,24);
         scanf("%i",&opcionJugadores);
         switch(opcionJugadores)
         {
@@ -769,13 +849,7 @@ void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
             break;
         case 4:
             system("cls");
-            /*
-            printf("Ingrese el nombre del jugador cuyos datos desea consultar: \n");
-            fflush(stdin);
-            gets(nombre);
-            system("cls");
-            mostrarJugadorLDL(listaPpl,nombre);
-            */
+
             subMenuBuscarJugador(arbolJugadores); ///Es mejor basicamente
             break;
         case 0:
@@ -783,6 +857,7 @@ void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores)
             break;
         default:
             system("cls");
+            gotoxy(5,5);
             printf("Error, opcion invalida. Intente nuevamente...");
             opcionJugadores=-1;
             break;
@@ -798,12 +873,28 @@ void subSubMenuEquipos(nodoEquipo* listaPpl)
     do
     {
         system("cls");
-        printf("MENU JUGADORES\n");
+
+        cuadroPantalla();
+
+        for(int i=1; i<99; i++)
+        {
+            gotoxy(i,3);
+            printf("-");
+        }
+
+        gotoxy(42,2);
+        printf("MENU EQUIPO\n");
+        gotoxy(5,5);
         printf("1- Dar de alta un equipo\n");
+        gotoxy(5,6);
         printf("2- Dar de baja un equipo\n");
+        gotoxy(5,7);
         printf("3- Modificar datos de un equipo\n");
+        gotoxy(5,8);
         printf("4- Consultar un equipo\n");
+        gotoxy(5,9);
         printf("0- Volver al menu anterior\n");
+        gotoxy(5,24);
         scanf("%i",&opcionEquipos);
         switch(opcionEquipos)
         {
@@ -841,6 +932,7 @@ void subSubMenuEquipos(nodoEquipo* listaPpl)
             break;
         default:
             system("cls");
+            gotoxy(5,5);
             printf("Error, opcion invalida. Intente nuevamente...");
             opcionEquipos=-1;
             break;
@@ -919,7 +1011,7 @@ void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJuga
 
         i++;
 
-        printf("\n\nDesea simular otra fecha? (s/n)\n");
+        printf("\n\n\nDesea simular otra fecha? (s/n)\n");
         fflush(stdin);
         scanf("%c",&continuar);
         system("cls");
