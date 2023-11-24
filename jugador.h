@@ -30,7 +30,7 @@ jugador validarCalidadJugador(jugador j);
 jugador validarPiernaHabilJugador(jugador j);
 jugador validarPosicionJugador(jugador j);
 
-
+///FUNCIONES ARBOL
 nodoarbol* inicArbol();
 nodoarbol* crear_nodo_arbol(jugador dato);
 nodoarbol* buscar(nodoarbol* arbol,char nombre[]);

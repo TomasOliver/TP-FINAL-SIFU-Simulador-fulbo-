@@ -9,6 +9,10 @@
 #include "torneo.h"
 #include "pila.h"
 
+///MENU ADMIN
+//SE ACCEDE DESDE EL MENU PRINCIPAL PONIENDO COMO OPCION "912", UNA VEZ EN EL MENU SECRETO, EL USUARIO ES "admin" Y LA CONTRASENIA ES "admin".
+
+
 ///Constantes
 const char nombreArchivo[]= {"archivo.bin"}; ///datos de equipos y jugadores
 const char nombreArchivoTorneo[]= {"archivoTorneo.bin"}; ///Datos del torneo
@@ -31,8 +35,8 @@ typedef struct
     char posicion[20];
     int puntosEquipo;
     int golesEquipo;
-    int estadoJugador; //1 activo - 2 inactivo
-    int estadoEquipo; //1 activo - 2 inactivo
+    int estadoJugador; //1 activo - 0 inactivo
+    int estadoEquipo; //1 activo - 0 inactivo
     int partidosJugados;
     int partidosGanados;
     int partidosEmpatados;
@@ -41,33 +45,31 @@ typedef struct
 
 ///Prototipado
 
+///FUNCIONES DE CARGA
 void cargarArchivo();
 void cargarArchivoTorneo();
 registroArchivo cargarRegistro();
+
+///FUNCIONES DE PASAJE
 jugador pasarJugador(registroArchivo aux);
 equipo pasarEquipo(registroArchivo aux);
 nodoEquipo* pasar_archivo_a_LDL(nodoEquipo* listaPpl);
-void mostrarLDL(nodoEquipo* LDL);
-void mostrarNombresEquipos(nodoEquipo* LDL);
 nodoarbol* pasar_archivo_a_arbol(nodoarbol* arbol);
-int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
-void mostrarNombresEquipos(nodoEquipo* LDL);
-int sistemaLogin(char usu[],char contra[]);
 nodoTorneo* pasarListaPPLATabla(nodoEquipo* listaEquipos, nodoTorneo* tabla);
-void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas,nodoTorneo* tabla);
 int pasarArchivoTorneoToTorneo(fecha torneo[],int dimension);
 void pasarTorneoToArchivoTorneo(fecha torneo[],int validos);
-void mostrarNombresEquipos(nodoEquipo* LDL);
 void pasarListaPplToArchivo(nodoEquipo* listaPpl);
 registroArchivo pasarEquipoToRegistro(equipo e);
 registroArchivo pasarJugadorToRegistro(jugador j);
-int validarGuardado(int opcionGuardado);
-void reiniciarArchivoRegistros();
-void reiniciarArchivoTorneo();
-int compararArchivosTorneo();
-void verificarPartidaGuardada();
 
+///FUNCIONES DE MOSTRADO
+void mostrarLDL(nodoEquipo* LDL);
+void mostrarNombresEquipos(nodoEquipo* LDL);
+int mostrarJugadoresPorNombreEquipo(nodoEquipo* LDL,char nombreEquipo[]);
+void mostrarNombresEquipos(nodoEquipo* LDL);
+void mostrarNombresEquipos(nodoEquipo* LDL);
 
+///MENUS Y SUB-MENUS
 void menuInicial();
 void menuPrincipal();
 void subMenuJugar(nodoEquipo* listaEquipos,fecha torneo[],int validosTorneo);
@@ -80,8 +82,18 @@ void subSubMenuJugadores(nodoEquipo* listaPpl,nodoarbol* arbolJugadores);
 void subSubMenuSimularTorneo(nodoEquipo* listaPpl,fecha torneo[],int validosTorneo);
 void subSubMenuEquipos(nodoEquipo* listaPpl);
 
-///auxiliares
+///FUNCIONES VARIAS
+int sistemaLogin(char usu[],char contra[]);
+void simularFecha(fecha torneo[],int validos,nodoEquipo* listaPpl,int fechasJugadas,nodoTorneo* tabla);
+int validarGuardado(int opcionGuardado);
+void reiniciarArchivoRegistros();
+void reiniciarArchivoTorneo();
+int compararArchivosTorneo();
+void verificarPartidaGuardada();
+
+///ESTETICO
 void cuadroPantalla();
+
 
 ///MAIN
 int main()
@@ -106,7 +118,6 @@ int main()
 
 
     //mostrarLDL(listaEquipos);
-    //system("pause");
 
 
     nodoarbol* arbolJugadores=inicArbol();
