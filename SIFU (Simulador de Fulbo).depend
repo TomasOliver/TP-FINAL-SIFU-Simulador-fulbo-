@@ -497,7 +497,7 @@
 	"string.h"
 	"subLista.h"
 
-1700807453 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\main.c
+1700808613 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"string.h"
@@ -507,6 +507,7 @@
 	"partido.h"
 	"gotoxy.h"
 	"torneo.h"
+	"pila.h"
 
 1700804225 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\torneo.h
 	"equipo.h"
@@ -519,4 +520,11 @@
 	"gotoxy.h"
 	"time.h"
 	"windows.h"
+
+1700808383 c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\pila.h
+
+1700808482 source:c:\users\nico\onedrive\documentos\nico\nico facultad\tecnicatura en programación\progra y labo 2\tp final\tp-final-sifu-simulador-fulbo-\pila.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
 

@@ -7,6 +7,7 @@
 #include "partido.h"
 #include "gotoxy.h"
 #include "torneo.h"
+#include "pila.h"
 
 ///Constantes
 const char nombreArchivo[]= {"archivo.bin"}; ///datos de equipos y jugadores
@@ -1120,9 +1121,9 @@ void subMenuGuardado(fecha torneo[],int validosTorneo,nodoEquipo* listaEquipos)
     {
         pasarTorneoToArchivoTorneo(torneo,validosTorneo);
         pasarListaPplToArchivo(listaEquipos);
+        cargandoInicio();
         printf("Los datos han sido guardados con exito.\n");
     }
-
     printf("Saliendo del programa...\n");
 }
 
